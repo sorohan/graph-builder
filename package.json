@@ -1,7 +1,8 @@
 {
   "name": "graph-builder",
   "version": "0.1.0",
-  "description": "",
+  "description": "A graph builder library for modeling abstract graph structures.",
+  "homepage": "https://github.com/sorohan/graph-builder/README.md",
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {},
@@ -16,7 +17,7 @@
     "test": "tape -r ts-node/register **/*.spec.ts",
     "cover": "nyc --reporter text --reporter html --report-dir coverage npm run test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["graph","adt","guava"],
+  "author": "Ben Sorohan",
   "license": "ISC"
 }
