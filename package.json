@@ -1,0 +1,21 @@
+{
+  "name": "tsgraph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/tape": "^4.2.33",
+    "nyc": "^13.1.0",
+    "tape": "^4.9.2",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.4"
+  },
+  "scripts": {
+    "test": "tape -r ts-node/register **/*.spec.ts",
+    "cover": "nyc --reporter text --reporter html --report-dir coverage npm run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -99,6 +99,7 @@ export class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
                 done: false,
               };
             }
+            result = entries.next();
           }
           return {
             value: undefined as any as N,
@@ -134,6 +135,7 @@ export class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
                 done: false,
               };
             }
+            result = entries.next();
           }
           return {
             value: undefined as any as N,
@@ -209,7 +211,7 @@ export class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
   public addSuccessor(node: N, value: V): V | undefined {
     const previousValue = this.adjacentNodeValues.get(node);
     this.adjacentNodeValues.set(node, value);
-    if (previousValue == null) {
+    if (previousValue === undefined) {
       checkPositive(++this.successorCount);
       return undefined;
     } else if (previousValue instanceof PredAndSucc) {
@@ -229,7 +231,7 @@ export class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
   }
 
   private static isSuccessor<V>(value: NodeValue<V>): boolean {
-    return (value != PRED) && (value != null);
+    return (value != PRED) && (value !== undefined);
   }
 }
 

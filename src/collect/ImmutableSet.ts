@@ -8,6 +8,7 @@ export interface ImmutableSetReadOperations<N> {
 
 export class ImmutableSet<N> extends Set<N> { // }, Iterable<N> {
   private readOperations: ImmutableSetReadOperations<N>;
+  private initialized = false;
 
   static fromIterable <N>(iterator: Iterable<N>): ImmutableSet<N> {
     return new ImmutableSet(Array.from(iterator));
@@ -24,10 +25,14 @@ export class ImmutableSet<N> extends Set<N> { // }, Iterable<N> {
       size: () => super.size,
       has: (a: N) => super.has(a)
     };
+    this.initialized = true;
   }
 
   add(value: N): this {
-    throw new Error('Not implemented');
+    if (this.initialized) { // add is called in super's constructor
+      throw new Error('Not implemented');
+    }
+    return super.add(value);
   }
 
   clear(): void {
@@ -64,10 +69,19 @@ export class ImmutableSet<N> extends Set<N> { // }, Iterable<N> {
 
   entries(): IterableIterator<[N, N]> {
     const iterator = Iterators.transform<N, [N, N]>(this.readOperations[Symbol.iterator](), (a: N) => [a, a]);
-    const iterableIterator: any = {
+    const iterableIterator: IterableIterator<[N, N]> = {
       next: () => iterator.next(),
+      [Symbol.iterator]: () => iterableIterator
     }
-    iterableIterator[Symbol.iterator] = () => iterableIterator;
+    return iterableIterator;
+  }
+
+  values(): IterableIterator<N> {
+    const iterator = this.readOperations[Symbol.iterator]();
+    const iterableIterator: IterableIterator<N> = {
+      next: () => iterator.next(),
+      [Symbol.iterator]: () => iterableIterator
+    }
     return iterableIterator;
   }
 }

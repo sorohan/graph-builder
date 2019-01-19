@@ -134,7 +134,7 @@ class Ordered<N> extends EndpointPair<N> {
       return false;
     }
 
-    return this.source() === other.source() && this.target === other.target();
+    return this.source() === other.source() && this.target() === other.target();
   }
 
   // public hashCode(): number {
