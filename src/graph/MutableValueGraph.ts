@@ -23,10 +23,7 @@ import { EndpointPair } from "./EndpointPair";
  * A subinterface of {@link ValueGraph} which adds mutation methods. When mutation is not required,
  * users should prefer the {@link ValueGraph} interface.
  *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- * @since 20.0
+ * @public
  */
 export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
 
@@ -49,12 +46,12 @@ export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * <p>Values do not have to be unique. However, values must be non-null.
    *
    * <p>If `nodeU` and `nodeV` are not already present in this graph, this method will
-   * silently {@link addNode(Object) add} `nodeU` and `nodeV` to the graph.
+   * silently {@link addNode} `nodeU` and `nodeV` to the graph.
    *
-   * @returns the value previously associated with the edge connecting `nodeU` to {@code
-   *     nodeV}, or null if there was no such edge.
+   * @returns the value previously associated with the edge connecting `nodeU` to
+   *     `nodeV`, or null if there was no such edge.
    * throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     allowsSelfLoops()}
+   *     allowsSelfLoops}
    */
   putEdgeValue(nodeU: N, nodeV: N, value: V): V | undefined;
 
@@ -70,12 +67,12 @@ export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * <p>Values do not have to be unique. However, values must be non-null.
    *
    * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link addNode(Object) add} each missing endpoint to the graph.
+   * {@link addNode} each missing endpoint to the graph.
    *
-   * @returns the value previously associated with the edge connecting `nodeU` to {@code
-   *     nodeV}, or null if there was no such edge.
+   * @returns the value previously associated with the edge connecting `nodeU` to
+   *     `nodeV`, or null if there was no such edge.
    * throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     allowsSelfLoops()}
+   *     allowsSelfLoops}
    * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    */
   putEdgeValueConnectingEndpoints(endpoints: EndpointPair<N>, value: V): V | undefined
@@ -90,8 +87,8 @@ export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
   /**
    * Removes the edge connecting `nodeU` to `nodeV`, if it is present.
    *
-   * @returns the value previously associated with the edge connecting `nodeU` to {@code
-   *     nodeV}, or null if there was no such edge.
+   * @returns the value previously associated with the edge connecting `nodeU` to
+   *     `nodeV`, or null if there was no such edge.
    */
   removeEdge(nodeU: N, nodeV: N): V | undefined;
 

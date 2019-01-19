@@ -6,8 +6,8 @@ export namespace Sets {
    * order of the returned set matches that of `set1`.
    *
    * <p>Results are undefined if `set1` and `set2` are sets based on different
-   * equivalence relations (as `HashSet`, `TreeSet`, and the keySet of an {@code
-   * IdentityHashMap} all are).
+   * equivalence relations (as `HashSet`, `TreeSet`, and the keySet of an
+   * `IdentityHashMap` all are).
    */
   export const difference = <E>(set1: Set<E>, set2: Set<E>): Set<E> => {
     const newSet = new Set(Array.from(set1));

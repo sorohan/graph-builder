@@ -41,10 +41,6 @@ type NodeValue<V> = PredAndSucc<V> | typeof PRED | V;
 
 /**
  * An implementation of {@link GraphConnections} for directed graphs.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
  */
 export class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
   // Every value in adjacentNodeValues this map must either be an instance of PredAndSucc with a successorValue of

@@ -20,14 +20,13 @@ import { Graph } from "./Graph";
 
 /**
  * An immutable pair representing the two endpoints of an edge in a graph. The {@link EndpointPair}
- * of a directed edge is an ordered pair of nodes ({@link source()} and {@link target()}). The
- * {@link EndpointPair} of an undirected edge is an unordered pair of nodes ({@link nodeU()} and
- * {@link nodeV()}).
+ * of a directed edge is an ordered pair of nodes ({@link source} and {@link target}). The
+ * {@link EndpointPair} of an undirected edge is an unordered pair of nodes ({@link nodeU} and
+ * {@link nodeV}).
  *
  * <p>The edge is a self-loop if, and only if, the two endpoints are equal.
  *
- * @author James Sexton
- * @since 20.0
+ * @public
  */
 export abstract class EndpointPair<N> implements Iterable<N> {
   constructor(readonly nodeU: N, readonly nodeV: N) { }
@@ -55,14 +54,14 @@ export abstract class EndpointPair<N> implements Iterable<N> {
   // }
 
   /**
-   * If this {@link EndpointPair} {@link isOrdered()}, returns the node which is the source.
+   * If this {@link EndpointPair} {@link isOrdered}, returns the node which is the source.
    *
    * throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
    */
   public abstract source(): N;
 
   /**
-   * If this {@link EndpointPair} {@link isOrdered()}, returns the node which is the target.
+   * If this {@link EndpointPair} {@link isOrdered}, returns the node which is the target.
    *
    * throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
    */
@@ -89,25 +88,18 @@ export abstract class EndpointPair<N> implements Iterable<N> {
    */
   public abstract isOrdered(): boolean;
 
-  /** Iterates in the order {@link nodeU()}, {@link nodeV()}. */
+  /** Iterates in the order {@link nodeU}, {@link nodeV}. */
   [Symbol.iterator]() {
      // @todo: convert to Itera
     return [this.nodeU, this.nodeV][Symbol.iterator]();
   }
 
   /**
-   * Two ordered {@link EndpointPair}s are equal if their {@link source()} and {@link target()}
+   * Two ordered {@link EndpointPair}s are equal if their {@link source} and {@link target}
    * are equal. Two unordered {@link EndpointPair}s are equal if they contain the same nodes. An
    * ordered {@link EndpointPair} is never equal to an unordered {@link EndpointPair}.
    */
   public abstract equals(obj?: Object): boolean
-
-  /**
-   * The hashcode of an ordered {@link EndpointPair} is equal to {@code Objects.hashCode(source(),
-   * target())}. The hashcode of an unordered {@link EndpointPair} is equal to {@code
-   * nodeU().hashCode() + nodeV().hashCode()}.
-   */
-  // public abstract hashCode(): number;
 }
 
 class Ordered<N> extends EndpointPair<N> {

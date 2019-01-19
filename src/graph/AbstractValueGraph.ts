@@ -31,11 +31,6 @@ import { Maps } from "../collect/Maps";
  *
  * <p>The methods implemented in this class should not be overridden unless the subclass admits a
  * more efficient implementation.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- * @since 20.0
  */
 export abstract class AbstractValueGraph<N, V> extends AbstractBaseGraph<N> implements ValueGraph<N, V> {
   public asGraph(): Graph<N> {

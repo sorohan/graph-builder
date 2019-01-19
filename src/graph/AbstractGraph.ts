@@ -23,10 +23,6 @@ import { Sets } from "../collect/Sets";
 /**
  * This class provides a skeletal implementation of {@link Graph}. It is recommended to extend this
  * class rather than implement {@link Graph} directly.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @since 20.0
  */
 export abstract class AbstractGraph<N> extends AbstractBaseGraph<N> implements Graph<N> {
   public equals(obj: Graph<N>): boolean {

@@ -43,6 +43,8 @@ import { ConfigurableMutableValueGraph } from "./ConfigurableMutableValueGraph";
  * graph.putEdgeValue("San Jose", "San Jose", 0.0);
  * graph.putEdgeValue("San Francisco", "San Jose", 48.4);
  * ```
+ *
+ * @public
  */
 export class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
 

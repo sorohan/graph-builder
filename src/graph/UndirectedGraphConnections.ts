@@ -22,10 +22,6 @@ import { ImmutableSet } from "../collect/ImmutableSet";
 
 /**
  * An implementation of {@link GraphConnections} for undirected graphs.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
  */
 export class UndirectedGraphConnections<N, V> implements GraphConnections<N, V> {
   private constructor (private adjacentNodeValues: Map<N, V>) { }

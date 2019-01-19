@@ -35,12 +35,6 @@ import { ImmutableSet } from "../collect/ImmutableSet";
  * changes to the graph (if the graph is mutable) but may not be modified by the user.
  *
  * <p>The time complexity of all collection-returning accessors is O(1), since views are returned.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @author Omar Darwish
- * @param <N> Node parameter type
- * @param <V> Value parameter type
  */
 export class ConfigurableValueGraph<N, V> extends AbstractValueGraph<N, V> {
   private isDirectedValue: boolean ;

@@ -8,6 +8,7 @@
     "entryPointSourceFile": "dist/index.d.ts"
   },
   "apiJsonFile": {
+    "enabled": true,
     "outputFolder": "input"
   }
 }

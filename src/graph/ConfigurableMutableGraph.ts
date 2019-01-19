@@ -31,9 +31,6 @@ import { ConfigurableMutableValueGraph } from "./ConfigurableMutableValueGraph";
  *
  * <p>Time complexities for mutation methods are all O(1) except for `removeNode(N node)`,
  * which is in O(d_node) where d_node is the degree of `node`.
- *
- * @author James Sexton
- * @param <N> Node parameter type
  */
 export class ConfigurableMutableGraph<N> extends ForwardingGraph<N> implements MutableGraph<N> {
   private backingValueGraph: MutableValueGraph<N, GraphConstants.Presence>;

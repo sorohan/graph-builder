@@ -40,15 +40,17 @@ export enum Type {
  * Used to represent the order of elements in a data structure that supports different options for
  * iteration order guarantees.
  *
+ * @remarks
+ *
  * <p>Example usage:
  *
- * <pre>{@code
+ * ```typescript
  * MutableGraph<Integer> graph =
  *     GraphBuilder.directed().nodeOrder(ElementOrder.<Integer>natural()).build();
- * }</pre>
+ * }
+ * ```
  *
- * @author Joshua O'Madadhain
- * @since 20.0
+ * @public
  */
 export class ElementOrder<T> {
   constructor(readonly type: Type, private readonly comparator?: Comparator<T>) {

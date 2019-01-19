@@ -24,8 +24,6 @@ import { EndpointPair } from "./EndpointPair";
 /**
  * A class to allow {@link Graph} implementations to be backed by a {@link BaseGraph}. This is not
  * currently planned to be released as a general-purpose forwarding class.
- *
- * @author James Sexton
  */
 export abstract class ForwardingGraph<N> extends AbstractGraph<N> {
 
@@ -36,7 +34,7 @@ export abstract class ForwardingGraph<N> extends AbstractGraph<N> {
   }
 
   /**
-   * Defer to {@link AbstractGraph.edges()} (based on {@link successors(Object)}) for full edges()
+   * Defer to {@link AbstractGraph.edges} (based on {@link successors}) for full edges()
    * implementation.
    */
   protected edgeCountValue(): number {

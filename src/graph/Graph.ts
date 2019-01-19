@@ -23,6 +23,8 @@ import { BaseGraph } from "./BaseGraph";
  * href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data,
  * whose edges are anonymous entities with no identity or information of their own.
  *
+ * @remarks
+ *
  * <p>A graph is composed of a set of nodes and a set of edges connecting pairs of nodes.
  *
  * <p>There are three primary interfaces provided to represent graphs. In order of increasing
@@ -31,7 +33,7 @@ import { BaseGraph } from "./BaseGraph";
  * href="https://github.com/google/guava/wiki/GraphsExplained#choosing-the-right-graph-type">
  * "Choosing the right graph type"</a> section of the Guava User Guide for more details.
  *
- * <h3>Capabilities</h3>
+ * **Capabilities**
  *
  * <p>`Graph` supports the following use cases (<a
  * href="https://github.com/google/guava/wiki/GraphsExplained#definitions">definitions of
@@ -47,27 +49,27 @@ import { BaseGraph } from "./BaseGraph";
  * <p>`Graph` explicitly does not support parallel edges, and forbids implementations or
  * extensions with parallel edges. If you need parallel edges, use {@link Network}.
  *
- * <h3>Building a `Graph`</h3>
+ * **Building a `Graph`**
  *
  * <p>The implementation classes that `common.graph` provides are not public, by design. To
  * create an instance of one of the built-in implementations of `Graph`, use the {@link
  * GraphBuilder} class:
  *
- * <pre>{@code
+ * ```typescript
  * MutableGraph<Integer> graph = GraphBuilder.undirected().build();
- * }</pre>
+ * ```
  *
- * <p>{@link GraphBuilder.build()} returns an instance of {@link MutableGraph}, which is a subtype
+ * <p>{@link GraphBuilder.build} returns an instance of {@link MutableGraph}, which is a subtype
  * of `Graph` that provides methods for adding and removing nodes and edges. If you do not
  * need to mutate a graph (e.g. if you write a method than runs a read-only algorithm on the graph),
  * you should use the non-mutating {@link Graph} interface, or an {@link ImmutableGraph}.
  *
  * <p>You can create an immutable copy of an existing `Graph` using {@link
- * ImmutableGraph#copyOf(Graph)}:
+ * ImmutableGraph.copyOf}:
  *
- * <pre>{@code
+ * ```typescript
  * ImmutableGraph<Integer> immutableGraph = ImmutableGraph.copyOf(graph);
- * }</pre>
+ * ```
  *
  * <p>Instances of {@link ImmutableGraph} do not implement {@link MutableGraph} (obviously!) and are
  * contractually guaranteed to be unmodifiable and thread-safe.
@@ -76,7 +78,7 @@ import { BaseGraph } from "./BaseGraph";
  * href="https://github.com/google/guava/wiki/GraphsExplained#building-graph-instances">more
  * information on (and examples of) building graphs</a>.
  *
- * <h3>Additional documentation</h3>
+ * **Additional documentation**
  *
  * <p>See the Guava User Guide for the `common.graph` package (<a
  * href="https://github.com/google/guava/wiki/GraphsExplained">"Graphs Explained"</a>) for
@@ -92,10 +94,7 @@ import { BaseGraph } from "./BaseGraph";
  *       for implementors</a>
  * </ul>
  *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> Node parameter type
- * @since 20.0
+ * @public
  */
 export interface Graph<N> extends BaseGraph<N> {
   /**
@@ -105,17 +104,17 @@ export interface Graph<N> extends BaseGraph<N> {
    * <p>Thus, two graphs A and B are equal if <b>all</b> of the following are true:
    *
    * <ul>
-   *   <li>A and B have equal {@link isDirected() directedness}.
-   *   <li>A and B have equal {@link nodes() node sets}.
-   *   <li>A and B have equal {@link edges() edge sets}.
+   *   <li>A and B have equal {@link isDirected}.
+   *   <li>A and B have equal {@link nodes}.
+   *   <li>A and B have equal {@link edges}.
    * </ul>
    *
-   * <p>Graph properties besides {@link isDirected() directedness} do <b>not</b> affect equality.
+   * <p>Graph properties besides {@link isDirected} do <b>not</b> affect equality.
    * For example, two graphs may be considered equal even if one allows self-loops and the other
    * doesn't. Additionally, the order in which nodes or edges are added to the graph, and the order
    * in which they are iterated over, are irrelevant.
    *
-   * <p>A reference implementation of this is provided by {@link AbstractGraph.equals(Object)}.
+   * <p>A reference implementation of this is provided by {@link AbstractGraph.equals}.
    */
   equals(object: object): boolean
 }

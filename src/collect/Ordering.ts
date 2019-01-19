@@ -23,7 +23,9 @@ import { Comparator } from "./Comparator";
  * of `Comparator` for pre-Java-8 users, in the same sense that {@link FluentIterable} is an
  * enriched {@link Iterable} for pre-Java-8 users.
  *
- * <h3>Three types of methods</h3>
+ * @remarks
+ *
+ * **Three types of methods**
  *
  * Like other fluent types, there are three types of methods present: methods for <i>acquiring</i>,
  * <i>chaining</i>, and <i>using</i>.
@@ -35,19 +37,19 @@ import { Comparator } from "./Comparator";
  * <ul>
  *   <li>Subclass it and implement {@link compare} instead of implementing {@link Comparator}
  *       directly
- *   <li>Pass a <i>pre-existing</i> {@link Comparator} instance to {@link from(Comparator)}
+ *   <li>Pass a <i>pre-existing</i> {@link Comparator} instance to {@link from}
  *   <li>Use the natural ordering, {@link Ordering.natural}
  * </ul>
  *
  * <h4>Chaining</h4>
  *
- * <p>Then you can use the <i>chaining</i> methods to get an altered version of that {@code
- * Ordering}, including:
+ * <p>Then you can use the <i>chaining</i> methods to get an altered version of that
+ * `Ordering`, including:
  *
  * <ul>
  *   <li>{@link reverse}
- *   <li>{@link compound(Comparator)}
- *   <li>{@link onResultOf(Function)}
+ *   <li>{@link compound}
+ *   <li>{@link onResultOf}
  *   <li>{@link nullsFirst} / {@link nullsLast}
  * </ul>
  *
@@ -62,17 +64,17 @@ import { Comparator } from "./Comparator";
  *   <li>{@link min} / {@link max}
  * </ul>
  *
- * <h3>Understanding complex orderings</h3>
+ * **Understanding complex orderings**
  *
  * <p>Complex chained orderings like the following example can be challenging to understand.
  *
- * <pre>{@code
+ * ```typescript
  * Ordering<Foo> ordering =
  *     Ordering.natural()
  *         .nullsFirst()
  *         .onResultOf(getBarFunction)
  *         .nullsLast();
- * }</pre>
+ * ```
  *
  * Note that each chaining method returns a new ordering instance which is backed by the previous
  * instance, but has the chance to act on values <i>before</i> handing off to that backing instance.
@@ -92,42 +94,38 @@ import { Comparator } from "./Comparator";
  * encounter a call to `reverse`, continue working backwards until a result is determined, and
  * then reverse that result.
  *
- * <h3>Additional notes</h3>
+ * **Additional notes**
  *
  * <p>Except as noted, the orderings returned by the factory methods of this class are serializable
  * if and only if the provided instances that back them are. For example, if `ordering` and
  * `function` can themselves be serialized, then `ordering.onResultOf(function)` can as
  * well.
  *
- * <h3>For Java 8 users</h3>
+ * **For Java 8 users**
  *
  * <p>If you are using Java 8, this class is now obsolete. Most of its functionality is now provided
  * by {@link java.util.stream.Stream Stream} and by {@link Comparator} itself, and the rest can now
  * be found as static methods in our new {@link Comparators} class. See each method below for
- * further instructions. Whenever possible, you should change any references of type {@code
- * Ordering} to be of type `Comparator` instead. However, at this time we have no plan to
+ * further instructions. Whenever possible, you should change any references of type
+ * `Ordering` to be of type `Comparator` instead. However, at this time we have no plan to
  * <i>deprecate</i> this class.
  *
  * <p>Many replacements involve adopting `Stream`, and these changes can sometimes make your
  * code verbose. Whenever following this advice, you should check whether `Stream` could be
  * adopted more comprehensively in your code; the end result may be quite a bit simpler.
  *
- * <h3>See also</h3>
+ * **See also**
  *
  * <p>See the Guava User Guide article on <a href=
  * "https://github.com/google/guava/wiki/OrderingExplained">`Ordering`</a>.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- * @since 2.0
  */
 export abstract class Ordering<T> implements Comparator<T> {
   public abstract compare(left: T, right: T): number;
 
   /**
    * Returns the least of the specified values according to this ordering. If there are multiple
-   * least values, the first of those is returned. The iterator will be left exhausted: its {@code
-   * hasNext()} method will return `false`.
+   * least values, the first of those is returned. The iterator will be left exhausted: its
+   * `hasNext` method will return `false`.
    *
    * <p><b>Java 8 users:</b> Continue to use this method for now. After the next release of Guava,
    * use `Streams.stream(iterator).min(thisComparator).get()` instead (but note that it does
@@ -137,7 +135,6 @@ export abstract class Ordering<T> implements Comparator<T> {
    * throws NoSuchElementException if `iterator` is empty
    * throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
    *     ordering.
-   * @since 11.0
    */
   public min<E extends T>(iterator: Iterator<E>): E {
     let result = iterator.next();
@@ -183,7 +180,6 @@ export abstract class Ordering<T> implements Comparator<T> {
    * throws NoSuchElementException if `iterator` is empty
    * throws ClassCastException if the parameters are not <i>mutually comparable</i> under this
    *     ordering.
-   * @since 11.0
    */
   public max<E extends T>(iterator: Iterator<E>): E {
     let result = iterator.next();
@@ -230,7 +226,6 @@ export abstract class Ordering<T> implements Comparator<T> {
    * @returns an immutable `RandomAccess` list of the `k` least elements in ascending
    *     order
    * throws IllegalArgumentException if `k` is negative
-   * @since 14.0
    */
   // public leastOf<E extends T>(iterator: Iterator<E>, k: number): Array<E> {
   //   if (k == 0 || !iterator.hasNext()) {
@@ -250,13 +245,9 @@ export abstract class Ordering<T> implements Comparator<T> {
    * <p>The implementation does not necessarily use a <i>stable</i> sorting algorithm; when multiple
    * elements are equivalent, it is undefined which will come first.
    *
-   * <p><b>Java 8 users:</b> Use {@code Streams.stream(iterable).collect(Comparators.greatest(k,
-   * thisComparator))} instead.
-   *
    * @returns an immutable `RandomAccess` list of the `k` greatest elements in
    *     <i>descending order</i>
    * throws IllegalArgumentException if `k` is negative
-   * @since 8.0
    */
   // public <E extends T> List<E> greatestOf(Iterable<E> iterable, int k) {
   //   // TODO(kevinb): see if delegation is hurting performance noticeably
@@ -278,7 +269,6 @@ export abstract class Ordering<T> implements Comparator<T> {
    * @returns an immutable `RandomAccess` list of the `k` greatest elements in
    *     <i>descending order</i>
    * throws IllegalArgumentException if `k` is negative
-   * @since 14.0
    */
   // public <E extends T> List<E> greatestOf(Iterator<E> iterator, int k) {
   //   return reverse().leastOf(iterator, k);
@@ -289,7 +279,7 @@ export abstract class Ordering<T> implements Comparator<T> {
    * only when the resulting list may need further modification, or may contain `null`. The
    * input is not modified. The returned list is serializable and has random access.
    *
-   * <p>Unlike {@link Sets.newTreeSet(Iterable)}, this method does not discard elements that are
+   * <p>Unlike {@link Sets.newTreeSet}, this method does not discard elements that are
    * duplicates according to the comparator. The sort performed is <i>stable</i>, meaning that such
    * elements will appear in the returned list in the same order they appeared in `elements`.
    *
@@ -297,7 +287,7 @@ export abstract class Ordering<T> implements Comparator<T> {
    * benchmarking
    * on Open JDK 7, {@link immutableSortedCopy} generally performs better (in both time and space)
    * than this method, and this method in turn generally performs better than copying the list and
-   * calling {@link Collections.sort(List)}.
+   * calling {@link Collections.sort}.
    */
   // TODO(kevinb): rerun benchmarks including new options
   // @CanIgnoreReturnValue // TODO(kak): Consider removing this
@@ -312,7 +302,7 @@ export abstract class Ordering<T> implements Comparator<T> {
    * Returns an <b>immutable</b> list containing `elements` sorted by this ordering. The input
    * is not modified.
    *
-   * <p>Unlike {@link Sets.newTreeSet(Iterable)}, this method does not discard elements that are
+   * <p>Unlike {@link Sets.newTreeSet}, this method does not discard elements that are
    * duplicates according to the comparator. The sort performed is <i>stable</i>, meaning that such
    * elements will appear in the returned list in the same order they appeared in `elements`.
    *
@@ -321,7 +311,6 @@ export abstract class Ordering<T> implements Comparator<T> {
    * on Open JDK 7, this method is the most efficient way to make a sorted copy of a collection.
    *
    * throws NullPointerException if any element of `elements` is `null`
-   * @since 3.0
    */
   // TODO(kevinb): rerun benchmarks including new options
   // @CanIgnoreReturnValue // TODO(kak): Consider removing this before internal migration
@@ -334,7 +323,7 @@ export abstract class Ordering<T> implements Comparator<T> {
    * equal to the element that preceded it, according to this ordering. Note that this is always
    * true when the iterable has fewer than two elements.
    *
-   * <p><b>Java 8 users:</b> Use the equivalent {@link Comparators.isInOrder(Iterable, Comparator)}
+   * <p><b>Java 8 users:</b> Use the equivalent {@link Comparators.isInOrder}
    * instead, since the rest of `Ordering` is mostly obsolete (as explained in the class
    * documentation).
    */
@@ -358,7 +347,7 @@ export abstract class Ordering<T> implements Comparator<T> {
    * greater than the element that preceded it, according to this ordering. Note that this is always
    * true when the iterable has fewer than two elements.
    *
-   * <p><b>Java 8 users:</b> Use the equivalent {@link Comparators#isInStrictOrder(Iterable,
+   * <p><b>Java 8 users:</b> Use the equivalent {@link Comparators.isInStrictOrder(Iterable,
    * Comparator)} instead, since the rest of `Ordering` is mostly obsolete (as explained in
    * the class documentation).
    */

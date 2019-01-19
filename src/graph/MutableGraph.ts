@@ -22,6 +22,8 @@ import { EndpointPair } from "./EndpointPair";
 /**
  * A subinterface of {@link Graph} which adds mutation methods. When mutation is not required, users
  * should prefer the {@link Graph} interface.
+ *
+ * @public
  */
 export interface MutableGraph<N> extends Graph<N> {
 
@@ -44,13 +46,13 @@ export interface MutableGraph<N> extends Graph<N> {
    * silently {@link addNode} `nodeU` and `nodeV` to the graph.
    *
    * @returns `true` if the graph was modified as a result of this call
-   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops()}
+   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops}
    */
   putEdge(nodeU: N, nodeV: N): boolean;
 
   /**
-   * Adds an edge connecting `endpoints` (in the order, if any, specified by {@code
-   * endpoints}) if one is not already present.
+   * Adds an edge connecting `endpoints` (in the order, if any, specified by
+   * `endpoints` if one is not already present.
    *
    * <p>If this graph is directed, `endpoints` must be ordered and the added edge will be
    * directed; if it is undirected, the added edge will be undirected.
@@ -58,10 +60,10 @@ export interface MutableGraph<N> extends Graph<N> {
    * <p>If this graph is directed, `endpoints` must be ordered.
    *
    * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link addNode(Object) add} each missing endpoint to the graph.
+   * {@link addNode} each missing endpoint to the graph.
    *
    * @returns `true` if the graph was modified as a result of this call
-   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops()}
+   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops}
    * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    */
   putEdgeConnectingEndpoints(endpoints: EndpointPair<N>): boolean;

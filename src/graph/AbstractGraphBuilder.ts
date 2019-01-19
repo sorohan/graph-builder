@@ -20,8 +20,6 @@ import { ElementOrder } from "./ElementOrder";
 
 /**
  * A base class for builders that construct graphs with user-defined properties.
- *
- * @author James Sexton
  */
 export abstract class AbstractGraphBuilder<N> {
   allowsSelfLoopsValue: boolean = false;

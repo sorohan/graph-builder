@@ -20,9 +20,7 @@ import { EndpointPair } from "./EndpointPair";
  */
 
 /**
- * A class to facilitate the set returned by {@link Graph.edges()}.
- *
- * @author James Sexton
+ * A class to facilitate the set returned by {@link Graph.edges}.
  */
 export abstract class EndpointPairIterator<N> implements Iterator<EndpointPair<N>> {
   abstract next(value?: any): IteratorResult<EndpointPair<N>>;

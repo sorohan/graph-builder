@@ -42,6 +42,8 @@ import { ConfigurableMutableGraph } from "./ConfigurableMutableGraph";
  * graph.putEdge("chocolate", "peanut butter");
  * graph.putEdge("peanut butter", "jelly");
  * ```
+ *
+ * @public
  */
 export class GraphBuilder<N> extends AbstractGraphBuilder<N> {
 

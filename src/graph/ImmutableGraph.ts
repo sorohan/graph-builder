@@ -23,18 +23,12 @@ import { GraphConstants } from "./GraphConstants";
 
 /**
  * A {@link Graph} whose elements and structural relationships will never change. Instances of this
- * class may be obtained with {@link copyOf(Graph)}.
+ * class may be obtained with {@link copyOf}.
  *
  * <p>See the Guava User's Guide's <a
  * href="https://github.com/google/guava/wiki/GraphsExplained#immutable-implementations">discussion
  * of the `Immutable*` types</a> for more information on the properties and guarantees
  * provided by this class.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @author Omar Darwish
- * @param <N> Node parameter type
- * @since 20.0
  */
 export class ImmutableGraph<N> extends ForwardingGraph<N> {
   constructor(private backingGraph: BaseGraph<N>) {

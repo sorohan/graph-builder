@@ -31,12 +31,6 @@ import { DirectedGraphConnections } from "./DirectedGraphConnections";
  *
  * <p>Time complexities for mutation methods are all O(1) except for `removeNode(N node)`,
  * which is in O(d_node) where d_node is the degree of `node`.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @author Omar Darwish
- * @param <N> Node parameter type
- * @param <V> Value parameter type
  */
 export class ConfigurableMutableValueGraph<N, V> extends ConfigurableValueGraph<N, V> implements MutableValueGraph<N, V> {
   /** Constructs a graph with the properties specified in `builder`. */

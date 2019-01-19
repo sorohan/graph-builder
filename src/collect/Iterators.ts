@@ -1,7 +1,7 @@
 export namespace Iterators {
   /**
-  * Returns a view containing the result of applying `function` to each element of {@code
-  * fromIterator}.
+  * Returns a view containing the result of applying `function` to each element of
+  * `fromIterator`.
   *
   * <p>The returned iterator supports `remove()` if `fromIterator` does. After a
   * successful `remove()` call, `fromIterator` no longer contains the corresponding
