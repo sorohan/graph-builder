@@ -22,7 +22,7 @@ A builder for constructing instances of [MutableGraph](./graph-builder.mutablegr
 
 <ul> <li>does not allow self-loops <li>orders Graph.nodes in the order in which the elements were added </ul>
 
-<p>Example of use:
+Example of use:
 ```javascript
 MutableGraph<String> graph = GraphBuilder.undirected().allowsSelfLoops(true).build();
 graph.putEdge("bread", "bread");
