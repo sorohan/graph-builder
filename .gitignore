@@ -7,3 +7,4 @@ coverage
 **/*.d.ts
 input
 dist
+temp
