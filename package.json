@@ -1,8 +1,9 @@
 {
-  "name": "tsgraph",
-  "version": "1.0.0",
+  "name": "graph-builder",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {},
   "devDependencies": {
     "@types/tape": "^4.2.33",
