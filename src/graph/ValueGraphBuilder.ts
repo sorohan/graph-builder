@@ -25,32 +25,24 @@ import { ConfigurableMutableValueGraph } from "./ConfigurableMutableValueGraph";
 /**
  * A builder for constructing instances of {@link MutableValueGraph} with user-defined properties.
  *
+ * @remarks
+ *
  * <p>A graph built by this class will have the following properties by default:
  *
  * <ul>
  *   <li>does not allow self-loops
- *   <li>orders {@link Graph#nodes()} in the order in which the elements were added
+ *   <li>orders {@link Graph.nodes} in the order in which the elements were added
  * </ul>
  *
  * <p>Example of use:
  *
- * <pre>{@code
- * MutableValueGraph<String, Double> graph =
+ * ```typescript
+ * MutableValueGraph<String, number> graph =
  *     ValueGraphBuilder.undirected().allowsSelfLoops(true).build();
  * graph.putEdgeValue("San Francisco", "San Francisco", 0.0);
  * graph.putEdgeValue("San Jose", "San Jose", 0.0);
  * graph.putEdgeValue("San Francisco", "San Jose", 48.4);
- * }</pre>
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> The most general node type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #nodeOrder}, or the builder is
- *     constructed based on an existing {@code ValueGraph} using {@link #from(ValueGraph)}.
- * @param <V> The most general value type this builder will support. This is normally {@code Object}
- *     unless the builder is constructed based on an existing {@code Graph} using {@link
- *     #from(ValueGraph)}.
- * @since 20.0
+ * ```
  */
 export class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
 
@@ -70,12 +62,12 @@ export class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Returns a {@link ValueGraphBuilder} initialized with all properties queryable from {@code
-   * graph}.
+   * Returns a {@link ValueGraphBuilder} initialized with all properties queryable from
+   * `graph`.
    *
    * <p>The "queryable" properties are those that are exposed through the {@link ValueGraph}
-   * interface, such as {@link ValueGraph#isDirected()}. Other properties, such as {@link
-   * #expectedNodeCount(int)}, are not set in the new builder.
+   * interface, such as {@link ValueGraph.isDirected}. Other properties, such as {@link
+   * expectedNodeCount}, are not set in the new builder.
    */
   public static from<N, V>(graph: ValueGraph<N, V>): ValueGraphBuilder<N, V> {
     return new ValueGraphBuilder<N, V>(graph.isDirected())
@@ -96,14 +88,14 @@ export class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
   /**
    * Specifies the expected number of nodes in the graph.
    *
-   * @throws IllegalArgumentException if {@code expectedNodeCount} is negative
+   * throws an error if `expectedNodeCount` is negative
    */
   public expectedNodeCount(expectedNodeCount: number): ValueGraphBuilder<N, V> {
     this.expectedNodeCountValue = expectedNodeCount;
     return this;
   }
 
-  /** Specifies the order of iteration for the elements of {@link Graph#nodes()}. */
+  /** Specifies the order of iteration for the elements of {@link Graph.nodes}. */
   public nodeOrder(nodeOrder: ElementOrder<N>): ValueGraphBuilder<N, V> {
     this.nodeOrderValue = nodeOrder;
     return this;

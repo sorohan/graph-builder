@@ -25,28 +25,23 @@ import { ConfigurableMutableGraph } from "./ConfigurableMutableGraph";
 /**
  * A builder for constructing instances of {@link MutableGraph} with user-defined properties.
  *
+ * @remarks
+ *
  * <p>A graph built by this class will have the following properties by default:
  *
  * <ul>
  *   <li>does not allow self-loops
- *   <li>orders {@link Graph#nodes()} in the order in which the elements were added
+ *   <li>orders {@link Graph.nodes} in the order in which the elements were added
  * </ul>
  *
  * <p>Example of use:
  *
- * <pre>{@code
+ * ```typescript
  * MutableGraph<String> graph = GraphBuilder.undirected().allowsSelfLoops(true).build();
  * graph.putEdge("bread", "bread");
  * graph.putEdge("chocolate", "peanut butter");
  * graph.putEdge("peanut butter", "jelly");
- * }</pre>
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> The most general node type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #nodeOrder}, or the builder is
- *     constructed based on an existing {@code Graph} using {@link #from(Graph)}.
- * @since 20.0
+ * ```
  */
 export class GraphBuilder<N> extends AbstractGraphBuilder<N> {
 
@@ -61,10 +56,10 @@ export class GraphBuilder<N> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Returns a {@link GraphBuilder} initialized with all properties queryable from {@code graph}.
+   * Returns a {@link GraphBuilder} initialized with all properties queryable from `graph`.
    *
    * <p>The "queryable" properties are those that are exposed through the {@link Graph} interface,
-   * such as {@link Graph#isDirected()}. Other properties, such as {@link #expectedNodeCount(int)},
+   * such as {@link Graph.isDirected}. Other properties, such as {@link expectedNodeCount},
    * are not set in the new builder.
    */
   public static from<T>(graph: Graph<T>): GraphBuilder<T> {
@@ -75,8 +70,7 @@ export class GraphBuilder<N> extends AbstractGraphBuilder<N> {
 
   /**
    * Specifies whether the graph will allow self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a graph that does not allow them will throw an {@link
-   * UnsupportedOperationException}.
+   * Attempting to add a self-loop to a graph that does not allow them will throw an error.
    */
   public allowsSelfLoops(allowsSelfLoops: boolean): GraphBuilder<N> {
     this.allowsSelfLoopsValue = allowsSelfLoops;
@@ -86,14 +80,14 @@ export class GraphBuilder<N> extends AbstractGraphBuilder<N> {
   /**
    * Specifies the expected number of nodes in the graph.
    *
-   * @throws IllegalArgumentException if {@code expectedNodeCount} is negative
+   * throws an error if `expectedNodeCount` is negative
    */
   public expectedNodeCount(expectedNodeCount: number): GraphBuilder<N> {
     this.expectedNodeCountValue = expectedNodeCount;
     return this;
   }
 
-  /** Specifies the order of iteration for the elements of {@link Graph#nodes()}. */
+  /** Specifies the order of iteration for the elements of {@link Graph.nodes}. */
   public nodeOrder(nodeOrder: ElementOrder<N>): GraphBuilder<N> {
     this.nodeOrderValue = nodeOrder;
     return this;

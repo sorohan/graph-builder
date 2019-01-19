@@ -20,9 +20,9 @@ import { Graph } from "./Graph";
 
 /**
  * An immutable pair representing the two endpoints of an edge in a graph. The {@link EndpointPair}
- * of a directed edge is an ordered pair of nodes ({@link #source()} and {@link #target()}). The
- * {@link EndpointPair} of an undirected edge is an unordered pair of nodes ({@link #nodeU()} and
- * {@link #nodeV()}).
+ * of a directed edge is an ordered pair of nodes ({@link source()} and {@link target()}). The
+ * {@link EndpointPair} of an undirected edge is an unordered pair of nodes ({@link nodeU()} and
+ * {@link nodeV()}).
  *
  * <p>The edge is a self-loop if, and only if, the two endpoints are equal.
  *
@@ -43,35 +43,35 @@ export abstract class EndpointPair<N> implements Iterable<N> {
     return new Unordered<N>(nodeV, nodeU);
   }
 
-  /** Returns an {@link EndpointPair} representing the endpoints of an edge in {@code graph}. */
+  /** Returns an {@link EndpointPair} representing the endpoints of an edge in `graph`. */
   static of<N>(graph: Graph<any>, nodeU: N, nodeV: N): EndpointPair<N> {
     return graph.isDirected() ? EndpointPair.ordered(nodeU, nodeV) : EndpointPair.unordered(nodeU, nodeV);
   }
 
-  /** Returns an {@link EndpointPair} representing the endpoints of an edge in {@code network}. */
+  /** Returns an {@link EndpointPair} representing the endpoints of an edge in `network`. */
   // @todo
   // static <N> EndpointPair<N> of(Network<?, ?> network, N nodeU, N nodeV) {
   //   return network.isDirected() ? ordered(nodeU, nodeV) : unordered(nodeU, nodeV);
   // }
 
   /**
-   * If this {@link EndpointPair} {@link #isOrdered()}, returns the node which is the source.
+   * If this {@link EndpointPair} {@link isOrdered()}, returns the node which is the source.
    *
-   * @throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
+   * throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
    */
   public abstract source(): N;
 
   /**
-   * If this {@link EndpointPair} {@link #isOrdered()}, returns the node which is the target.
+   * If this {@link EndpointPair} {@link isOrdered()}, returns the node which is the target.
    *
-   * @throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
+   * throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
    */
   public abstract target(): N;
 
   /**
-   * Returns the node that is adjacent to {@code node} along the origin edge.
+   * Returns the node that is adjacent to `node` along the origin edge.
    *
-   * @throws IllegalArgumentException if this {@link EndpointPair} does not contain {@code node}
+   * throws IllegalArgumentException if this {@link EndpointPair} does not contain `node`
    */
   public adjacentNode(node: N): N {
     if (node === this.nodeU) {
@@ -84,19 +84,19 @@ export abstract class EndpointPair<N> implements Iterable<N> {
   }
 
   /**
-   * Returns {@code true} if this {@link EndpointPair} is an ordered pair (i.e. represents the
+   * Returns `true` if this {@link EndpointPair} is an ordered pair (i.e. represents the
    * endpoints of a directed edge).
    */
   public abstract isOrdered(): boolean;
 
-  /** Iterates in the order {@link #nodeU()}, {@link #nodeV()}. */
+  /** Iterates in the order {@link nodeU()}, {@link nodeV()}. */
   [Symbol.iterator]() {
      // @todo: convert to Itera
     return [this.nodeU, this.nodeV][Symbol.iterator]();
   }
 
   /**
-   * Two ordered {@link EndpointPair}s are equal if their {@link #source()} and {@link #target()}
+   * Two ordered {@link EndpointPair}s are equal if their {@link source()} and {@link target()}
    * are equal. Two unordered {@link EndpointPair}s are equal if they contain the same nodes. An
    * ordered {@link EndpointPair} is never equal to an unordered {@link EndpointPair}.
    */

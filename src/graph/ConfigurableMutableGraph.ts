@@ -29,8 +29,8 @@ import { ConfigurableMutableValueGraph } from "./ConfigurableMutableValueGraph";
  * Configurable implementation of {@link MutableGraph} that supports both directed and undirected
  * graphs. Instances of this class should be constructed with {@link GraphBuilder}.
  *
- * <p>Time complexities for mutation methods are all O(1) except for {@code removeNode(N node)},
- * which is in O(d_node) where d_node is the degree of {@code node}.
+ * <p>Time complexities for mutation methods are all O(1) except for `removeNode(N node)`,
+ * which is in O(d_node) where d_node is the degree of `node`.
  *
  * @author James Sexton
  * @param <N> Node parameter type
@@ -38,7 +38,7 @@ import { ConfigurableMutableValueGraph } from "./ConfigurableMutableValueGraph";
 export class ConfigurableMutableGraph<N> extends ForwardingGraph<N> implements MutableGraph<N> {
   private backingValueGraph: MutableValueGraph<N, GraphConstants.Presence>;
 
-  /** Constructs a {@link MutableGraph} with the properties specified in {@code builder}. */
+  /** Constructs a {@link MutableGraph} with the properties specified in `builder`. */
   constructor(builder: AbstractGraphBuilder<N>) {
     super();
     this.backingValueGraph = ConfigurableMutableValueGraph.from<N, GraphConstants.Presence>(builder);

@@ -29,8 +29,8 @@ import { DirectedGraphConnections } from "./DirectedGraphConnections";
  * Configurable implementation of {@link MutableValueGraph} that supports both directed and
  * undirected graphs. Instances of this class should be constructed with {@link ValueGraphBuilder}.
  *
- * <p>Time complexities for mutation methods are all O(1) except for {@code removeNode(N node)},
- * which is in O(d_node) where d_node is the degree of {@code node}.
+ * <p>Time complexities for mutation methods are all O(1) except for `removeNode(N node)`,
+ * which is in O(d_node) where d_node is the degree of `node`.
  *
  * @author James Sexton
  * @author Joshua O'Madadhain
@@ -39,7 +39,7 @@ import { DirectedGraphConnections } from "./DirectedGraphConnections";
  * @param <V> Value parameter type
  */
 export class ConfigurableMutableValueGraph<N, V> extends ConfigurableValueGraph<N, V> implements MutableValueGraph<N, V> {
-  /** Constructs a graph with the properties specified in {@code builder}. */
+  /** Constructs a graph with the properties specified in `builder`. */
   static from<N, V>(builder: AbstractGraphBuilder<N>): ConfigurableMutableValueGraph<N, V> {
     return new ConfigurableMutableValueGraph(
       builder,
@@ -59,9 +59,9 @@ export class ConfigurableMutableValueGraph<N, V> extends ConfigurableValueGraph<
   }
 
   /**
-   * Adds {@code node} to the graph and returns the associated {@link GraphConnections}.
+   * Adds `node` to the graph and returns the associated {@link GraphConnections}.
    *
-   * @throws IllegalStateException if {@code node} is already present
+   * throws IllegalStateException if `node` is already present
    */
   private addNodeInternal(node: N): GraphConnections<N, V> {
     const connections: GraphConnections<N, V> = this.newConnections();

@@ -22,78 +22,71 @@ import { EndpointPair } from "./EndpointPair";
 /**
  * A subinterface of {@link Graph} which adds mutation methods. When mutation is not required, users
  * should prefer the {@link Graph} interface.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> Node parameter type
- * @since 20.0
  */
 export interface MutableGraph<N> extends Graph<N> {
 
   /**
-   * Adds {@code node} if it is not already present.
+   * Adds `node` if it is not already present.
    *
-   * <p><b>Nodes must be unique</b>, just as {@code Map} keys must be. They must also be non-null.
+   * <p><b>Nodes must be unique</b>, just as `Map` keys must be. They must also be non-null.
    *
-   * @return {@code true} if the graph was modified as a result of this call
+   * @returns `true` if the graph was modified as a result of this call
    */
   addNode(node: N): boolean;
 
   /**
-   * Adds an edge connecting {@code nodeU} to {@code nodeV} if one is not already present.
+   * Adds an edge connecting `nodeU` to `nodeV` if one is not already present.
    *
    * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
    * undirected.
    *
-   * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-   * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
+   * <p>If `nodeU` and `nodeV` are not already present in this graph, this method will
+   * silently {@link addNode} `nodeU` and `nodeV` to the graph.
    *
-   * @return {@code true} if the graph was modified as a result of this call
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsSelfLoops()}
+   * @returns `true` if the graph was modified as a result of this call
+   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops()}
    */
   putEdge(nodeU: N, nodeV: N): boolean;
 
   /**
-   * Adds an edge connecting {@code endpoints} (in the order, if any, specified by {@code
+   * Adds an edge connecting `endpoints` (in the order, if any, specified by {@code
    * endpoints}) if one is not already present.
    *
-   * <p>If this graph is directed, {@code endpoints} must be ordered and the added edge will be
+   * <p>If this graph is directed, `endpoints` must be ordered and the added edge will be
    * directed; if it is undirected, the added edge will be undirected.
    *
-   * <p>If this graph is directed, {@code endpoints} must be ordered.
+   * <p>If this graph is directed, `endpoints` must be ordered.
    *
    * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link #addNode(Object) add} each missing endpoint to the graph.
+   * {@link addNode(Object) add} each missing endpoint to the graph.
    *
-   * @return {@code true} if the graph was modified as a result of this call
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsSelfLoops()}
-   * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   * @returns `true` if the graph was modified as a result of this call
+   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops()}
+   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    */
   putEdgeConnectingEndpoints(endpoints: EndpointPair<N>): boolean;
 
   /**
-   * Removes {@code node} if it is present; all edges incident to {@code node} will also be removed.
+   * Removes `node` if it is present; all edges incident to `node` will also be removed.
    *
-   * @return {@code true} if the graph was modified as a result of this call
+   * @returns `true` if the graph was modified as a result of this call
    */
   removeNode(node: N): boolean
 
   /**
-   * Removes the edge connecting {@code nodeU} to {@code nodeV}, if it is present.
+   * Removes the edge connecting `nodeU` to `nodeV`, if it is present.
    *
-   * @return {@code true} if the graph was modified as a result of this call
+   * @returns `true` if the graph was modified as a result of this call
    */
   removeEdge(nodeU: N, nodeV: N): boolean
 
   /**
-   * Removes the edge connecting {@code endpoints}, if it is present.
+   * Removes the edge connecting `endpoints`, if it is present.
    *
-   * <p>If this graph is directed, {@code endpoints} must be ordered.
+   * <p>If this graph is directed, `endpoints` must be ordered.
    *
-   * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @return {@code true} if the graph was modified as a result of this call
+   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   * @returns `true` if the graph was modified as a result of this call
    */
   removeEdgeConnectingEndpoints(endpoints: EndpointPair<N>): boolean
 }

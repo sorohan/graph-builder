@@ -36,7 +36,7 @@ export abstract class ForwardingGraph<N> extends AbstractGraph<N> {
   }
 
   /**
-   * Defer to {@link AbstractGraph#edges()} (based on {@link #successors(Object)}) for full edges()
+   * Defer to {@link AbstractGraph.edges()} (based on {@link successors(Object)}) for full edges()
    * implementation.
    */
   protected edgeCountValue(): number {

@@ -33,29 +33,29 @@ export interface GraphConnections<N, V> {
   successors(): Set<N>;
 
   /**
-   * Returns the value associated with the edge connecting the origin node to {@code node}, or undefined
+   * Returns the value associated with the edge connecting the origin node to `node`, or undefined
    * if there is no such edge.
    */
   value(node: N): V | undefined;
 
-  /** Remove {@code node} from the set of predecessors. */
+  /** Remove `node` from the set of predecessors. */
   removePredecessor(node: N): void;
 
   /**
-   * Remove {@code node} from the set of successors. Returns the value previously associated with
+   * Remove `node` from the set of successors. Returns the value previously associated with
    * the edge connecting the two nodes.
    */
   removeSuccessor(node: N): V | undefined
 
   /**
-   * Add {@code node} as a predecessor to the origin node. In the case of an undirected graph, it
-   * also becomes a successor. Associates {@code value} with the edge connecting the two nodes.
+   * Add `node` as a predecessor to the origin node. In the case of an undirected graph, it
+   * also becomes a successor. Associates `value` with the edge connecting the two nodes.
    */
   addPredecessor(node: N, value: V): void;
 
   /**
-   * Add {@code node} as a successor to the origin node. In the case of an undirected graph, it also
-   * becomes a predecessor. Associates {@code value} with the edge connecting the two nodes. Returns
+   * Add `node` as a successor to the origin node. In the case of an undirected graph, it also
+   * becomes a predecessor. Associates `value` with the edge connecting the two nodes. Returns
    * the value previously associated with the edge connecting the two nodes.
    */
   addSuccessor(node: N, value: V): V | undefined;

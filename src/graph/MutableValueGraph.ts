@@ -31,76 +31,76 @@ import { EndpointPair } from "./EndpointPair";
 export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
 
   /**
-   * Adds {@code node} if it is not already present.
+   * Adds `node` if it is not already present.
    *
-   * <p><b>Nodes must be unique</b>, just as {@code Map} keys must be. They must also be non-null.
+   * <p><b>Nodes must be unique</b>, just as `Map` keys must be. They must also be non-null.
    *
-   * @return {@code true} if the graph was modified as a result of this call
+   * @returns `true` if the graph was modified as a result of this call
    */
   addNode(node: N): boolean;
 
   /**
-   * Adds an edge connecting {@code nodeU} to {@code nodeV} if one is not already present, and
-   * sets a value for that edge to {@code value} (overwriting the existing value, if any).
+   * Adds an edge connecting `nodeU` to `nodeV` if one is not already present, and
+   * sets a value for that edge to `value` (overwriting the existing value, if any).
    *
    * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
    * undirected.
    *
    * <p>Values do not have to be unique. However, values must be non-null.
    *
-   * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-   * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
+   * <p>If `nodeU` and `nodeV` are not already present in this graph, this method will
+   * silently {@link addNode(Object) add} `nodeU` and `nodeV` to the graph.
    *
-   * @return the value previously associated with the edge connecting {@code nodeU} to {@code
+   * @returns the value previously associated with the edge connecting `nodeU` to {@code
    *     nodeV}, or null if there was no such edge.
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsSelfLoops()}
+   * throws IllegalArgumentException if the introduction of the edge would violate {@link
+   *     allowsSelfLoops()}
    */
   putEdgeValue(nodeU: N, nodeV: N, value: V): V | undefined;
 
   /**
-   * Adds an edge connecting {@code endpoints} if one is not already present, and sets a value for
-   * that edge to {@code value} (overwriting the existing value, if any).
+   * Adds an edge connecting `endpoints` if one is not already present, and sets a value for
+   * that edge to `value` (overwriting the existing value, if any).
    *
    * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
    * undirected.
    *
-   * <p>If this graph is directed, {@code endpoints} must be ordered.
+   * <p>If this graph is directed, `endpoints` must be ordered.
    *
    * <p>Values do not have to be unique. However, values must be non-null.
    *
    * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link #addNode(Object) add} each missing endpoint to the graph.
+   * {@link addNode(Object) add} each missing endpoint to the graph.
    *
-   * @return the value previously associated with the edge connecting {@code nodeU} to {@code
+   * @returns the value previously associated with the edge connecting `nodeU` to {@code
    *     nodeV}, or null if there was no such edge.
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsSelfLoops()}
-   * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   * throws IllegalArgumentException if the introduction of the edge would violate {@link
+   *     allowsSelfLoops()}
+   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    */
   putEdgeValueConnectingEndpoints(endpoints: EndpointPair<N>, value: V): V | undefined
 
   /**
-   * Removes {@code node} if it is present; all edges incident to {@code node} will also be removed.
+   * Removes `node` if it is present; all edges incident to `node` will also be removed.
    *
-   * @return {@code true} if the graph was modified as a result of this call
+   * @returns `true` if the graph was modified as a result of this call
    */
   removeNode(node: N): boolean;
 
   /**
-   * Removes the edge connecting {@code nodeU} to {@code nodeV}, if it is present.
+   * Removes the edge connecting `nodeU` to `nodeV`, if it is present.
    *
-   * @return the value previously associated with the edge connecting {@code nodeU} to {@code
+   * @returns the value previously associated with the edge connecting `nodeU` to {@code
    *     nodeV}, or null if there was no such edge.
    */
   removeEdge(nodeU: N, nodeV: N): V | undefined;
 
   /**
-   * Removes the edge connecting {@code endpoints}, if it is present.
+   * Removes the edge connecting `endpoints`, if it is present.
    *
-   * <p>If this graph is directed, {@code endpoints} must be ordered.
+   * <p>If this graph is directed, `endpoints` must be ordered.
    *
-   * @return the value previously associated with the edge connecting {@code endpoints}, or null if
+   * @returns the value previously associated with the edge connecting `endpoints`, or null if
    *     there was no such edge.
    */
   removeEdgeConnectingEndpoints(endpoints: EndpointPair<N>): V | undefined

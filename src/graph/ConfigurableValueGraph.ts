@@ -51,7 +51,7 @@ export class ConfigurableValueGraph<N, V> extends AbstractValueGraph<N, V> {
 
   protected edgeCountValue: number; // must be updated when edges are added or removed
 
-  /** Constructs a graph with the properties specified in {@code builder}. */
+  /** Constructs a graph with the properties specified in `builder`. */
   static from<N, V>(builder: AbstractGraphBuilder<N>): ConfigurableValueGraph<N, V> {
     return new ConfigurableValueGraph(
       builder,
@@ -62,7 +62,7 @@ export class ConfigurableValueGraph<N, V> extends AbstractValueGraph<N, V> {
   }
 
   /**
-   * Constructs a graph with the properties specified in {@code builder}, initialized with the given
+   * Constructs a graph with the properties specified in `builder`, initialized with the given
    * node map.
    */
   constructor(

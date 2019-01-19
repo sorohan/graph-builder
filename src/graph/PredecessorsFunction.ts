@@ -33,25 +33,25 @@
  *
  * you will invoke it depending on the graph representation you're using.
  *
- * <p>If you have an instance of one of the primary {@code common.graph} types ({@link Graph},
+ * <p>If you have an instance of one of the primary `common.graph` types ({@link Graph},
  * {@link ValueGraph}, and {@link Network}):
  *
  * <pre>{@code
  * someGraphAlgorithm(startNode, graph);
  * }</pre>
  *
- * This works because those types each implement {@code PredecessorsFunction}. It will also work
+ * This works because those types each implement `PredecessorsFunction`. It will also work
  * with any other implementation of this interface.
  *
- * <p>If you have your own graph implementation based around a custom node type {@code MyNode},
- * which has a method {@code getParents()} that retrieves its predecessors in a graph:
+ * <p>If you have your own graph implementation based around a custom node type `MyNode`,
+ * which has a method `getParents()` that retrieves its predecessors in a graph:
  *
  * <pre>{@code
  * someGraphAlgorithm(startNode, MyNode::getParents);
  * }</pre>
  *
  * <p>If you have some other mechanism for returning the predecessors of a node, or one that doesn't
- * return a {@code Iterable<? extends N>}, then you can use a lambda to perform a more general
+ * return a `Iterable<? extends N>`, then you can use a lambda to perform a more general
  * transformation:
  *
  * <pre>{@code
@@ -64,7 +64,7 @@
  *
  * <h3>Additional documentation</h3>
  *
- * <p>See the Guava User Guide for the {@code common.graph} package (<a
+ * <p>See the Guava User Guide for the `common.graph` package (<a
  * href="https://github.com/google/guava/wiki/GraphsExplained">"Graphs Explained"</a>) for
  * additional documentation, including <a
  * href="https://github.com/google/guava/wiki/GraphsExplained#notes-for-implementors">notes for
@@ -77,23 +77,23 @@
  */
 export interface PredecessorsFunction<N> {
   /**
-   * Returns all nodes in this graph adjacent to {@code node} which can be reached by traversing
-   * {@code node}'s incoming edges <i>against</i> the direction (if any) of the edge.
+   * Returns all nodes in this graph adjacent to `node` which can be reached by traversing
+   * `node`'s incoming edges <i>against</i> the direction (if any) of the edge.
    *
-   * <p>Some algorithms that operate on a {@code PredecessorsFunction} may produce undesired results
+   * <p>Some algorithms that operate on a `PredecessorsFunction` may produce undesired results
    * if the returned {@link Iterable} contains duplicate elements. Implementations of such
    * algorithms should document their behavior in the presence of duplicates.
    *
-   * <p>The elements of the returned {@code Iterable} must each be:
+   * <p>The elements of the returned `Iterable` must each be:
    *
    * <ul>
    *   <li>Non-null
-   *   <li>Usable as {@code Map} keys (see the Guava User Guide's section on <a
+   *   <li>Usable as `Map` keys (see the Guava User Guide's section on <a
    *       href="https://github.com/google/guava/wiki/GraphsExplained#graph-elements-nodes-and-edges">
    *       graph elements</a> for details)
    * </ul>
    *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
+   * throws IllegalArgumentException if `node` is not an element of this graph
    */
   predecessors(node: N): Iterable<N>
 }

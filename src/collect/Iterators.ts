@@ -1,10 +1,10 @@
 export namespace Iterators {
   /**
-  * Returns a view containing the result of applying {@code function} to each element of {@code
+  * Returns a view containing the result of applying `function` to each element of {@code
   * fromIterator}.
   *
-  * <p>The returned iterator supports {@code remove()} if {@code fromIterator} does. After a
-  * successful {@code remove()} call, {@code fromIterator} no longer contains the corresponding
+  * <p>The returned iterator supports `remove()` if `fromIterator` does. After a
+  * successful `remove()` call, `fromIterator` no longer contains the corresponding
   * element.
   */
   export const transform = <F, T>(

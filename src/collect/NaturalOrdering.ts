@@ -26,10 +26,10 @@ export class NaturalOrdering<T> extends Ordering<Comparable<T>> {
    * Returns a serializable ordering that uses the natural order of the values. The ordering throws
    * a {@link NullPointerException} when passed a null parameter.
    *
-   * <p>The type specification is {@code <C extends Comparable>}, instead of the technically correct
-   * {@code <C extends Comparable<? super C>>}, to support legacy types from before Java 5.
+   * <p>The type specification is `<C extends Comparable>`, instead of the technically correct
+   * `<C extends Comparable<? super C>>`, to support legacy types from before Java 5.
    *
-   * <p><b>Java 8 users:</b> use {@link Comparator#naturalOrder} instead.
+   * <p><b>Java 8 users:</b> use {@link Comparator.naturalOrder} instead.
    */
   public static of<C extends Comparable<C>>(): Ordering<C> {
     return NaturalOrdering.INSTANCE;

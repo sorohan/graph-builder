@@ -73,7 +73,7 @@ export class ElementOrder<T> {
 
   /**
    * Returns an instance which specifies that the ordering of the elements is guaranteed to be
-   * determined by {@code comparator}.
+   * determined by `comparator`.
    */
   public static sorted<S>(comparator: Comparator<S>): ElementOrder<S> {
     return new ElementOrder<S>(Type.SORTED, comparator);
@@ -82,7 +82,7 @@ export class ElementOrder<T> {
   /**
    * Returns the {@link Comparator} used.
    *
-   * @throws UnsupportedOperationException if comparator is not defined
+   * throws UnsupportedOperationException if comparator is not defined
    */
   public getComparator(): Comparator<T> {
     if (this.comparator) {

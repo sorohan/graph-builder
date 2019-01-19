@@ -45,7 +45,7 @@ export abstract class AbstractBaseGraph<N> implements BaseGraph<N> {
   abstract successors(node: N): Set<N>;
 
   /**
-   * Returns the number of edges in this graph; used to calculate the size of {@link #edges()}. This
+   * Returns the number of edges in this graph; used to calculate the size of {@link edges()}. This
    * implementation requires O(|N|) time. Classes extending this one may manually keep track of the
    * number of edges as the graph is updated, and override this method for better performance.
    */
@@ -58,8 +58,8 @@ export abstract class AbstractBaseGraph<N> implements BaseGraph<N> {
   }
 
   /**
-   * An implementation of {@link BaseGraph#edges()} defined in terms of {@link #nodes()} and {@link
-   * #successors(Object)}.
+   * An implementation of {@link BaseGraph.edges()} defined in terms of {@link nodes()} and {@link
+   * successors(Object)}.
    */
   public edges(): Set<EndpointPair<N>> {
     return ImmutableSet.fromSetOperations<EndpointPair<N>>({
@@ -110,7 +110,7 @@ export abstract class AbstractBaseGraph<N> implements BaseGraph<N> {
   }
 
   /**
-   * Throws {@code IllegalArgumentException} if the ordering of {@code endpoints} is not compatible
+   * Throws `IllegalArgumentException` if the ordering of `endpoints` is not compatible
    * with the directionality of this graph.
    */
   protected validateEndpoints(endpoints: EndpointPair<any>): void {

@@ -1,12 +1,12 @@
 export namespace Sets {
   /**
    * Returns an unmodifiable <b>view</b> of the difference of two sets. The returned set contains
-   * all elements that are contained by {@code set1} and not contained by {@code set2}. {@code set2}
-   * may also contain elements not present in {@code set1}; these are simply ignored. The iteration
-   * order of the returned set matches that of {@code set1}.
+   * all elements that are contained by `set1` and not contained by `set2`. `set2`
+   * may also contain elements not present in `set1`; these are simply ignored. The iteration
+   * order of the returned set matches that of `set1`.
    *
-   * <p>Results are undefined if {@code set1} and {@code set2} are sets based on different
-   * equivalence relations (as {@code HashSet}, {@code TreeSet}, and the keySet of an {@code
+   * <p>Results are undefined if `set1` and `set2` are sets based on different
+   * equivalence relations (as `HashSet`, `TreeSet`, and the keySet of an {@code
    * IdentityHashMap} all are).
    */
   export const difference = <E>(set1: Set<E>, set2: Set<E>): Set<E> => {
