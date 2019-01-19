@@ -1,0 +1,7 @@
+src
+coverage
+.git
+.nyc_output
+.sonarlint
+.vscode
+tsconfig
