@@ -34,7 +34,7 @@ import { ConfigurableMutableGraph } from "./ConfigurableMutableGraph";
  *   <li>orders {@link Graph.nodes} in the order in which the elements were added
  * </ul>
  *
- * <p>Example of use:
+ * Example of use:
  *
  * ```typescript
  * MutableGraph<String> graph = GraphBuilder.undirected().allowsSelfLoops(true).build();
