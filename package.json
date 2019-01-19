@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "A graph builder library for modeling abstract graph structures.",
   "homepage": "https://github.com/sorohan/graph-builder/README.md",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {},
   "devDependencies": {
     "@types/tape": "^4.2.33",
