@@ -10,7 +10,7 @@ removeEdge(nodeU: N, nodeV: N): V | undefined;
 ```
 **Returns:** `V | undefined`
 
-the value previously associated with the edge connecting `nodeU` to `nodeV`<!-- -->, or null if there was no such edge.
+the value previously associated with the edge connecting `nodeU` to `nodeV`<!-- -->, or undefined if there was no such edge.
 
 ## Parameters
 

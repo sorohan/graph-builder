@@ -18,13 +18,13 @@ A builder for constructing instances of [MutableValueGraph](./graph-builder.muta
 
 ## Remarks
 
-<p>A graph built by this class will have the following properties by default:
+A graph built by this class will have the following properties by default:
 
-<ul> <li>does not allow self-loops <li>orders Graph.nodes in the order in which the elements were added </ul>
+- does not allow self-loops - orders Graph.nodes in the order in which the elements were added
 
-<p>Example of use:
+Example of use:
 ```javascript
-MutableValueGraph<String, number> graph =
+const graph: MutableValueGraph<String, number> =
     ValueGraphBuilder.undirected().allowsSelfLoops(true).build();
 graph.putEdgeValue("San Francisco", "San Francisco", 0.0);
 graph.putEdgeValue("San Jose", "San Jose", 0.0);

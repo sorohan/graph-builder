@@ -30,7 +30,7 @@ export interface MutableGraph<N> extends Graph<N> {
   /**
    * Adds `node` if it is not already present.
    *
-   * <p><b>Nodes must be unique</b>, just as `Map` keys must be. They must also be non-null.
+   * <b>Nodes must be unique</b>, just as `Map` keys must be.
    *
    * @returns `true` if the graph was modified as a result of this call
    */
@@ -39,14 +39,15 @@ export interface MutableGraph<N> extends Graph<N> {
   /**
    * Adds an edge connecting `nodeU` to `nodeV` if one is not already present.
    *
-   * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
+   * If the graph is directed, the resultant edge will be directed; otherwise, it will be
    * undirected.
    *
-   * <p>If `nodeU` and `nodeV` are not already present in this graph, this method will
-   * silently {@link addNode} `nodeU` and `nodeV` to the graph.
+   * If `nodeU` and `nodeV` are not already present in this graph, this method will
+   * silently {@link MutableGraph.addNode} `nodeU` and `nodeV` to the graph.
+   *
+   * Throws if the introduction of the edge would violate {@link BaseGraph.allowsSelfLoops}.
    *
    * @returns `true` if the graph was modified as a result of this call
-   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops}
    */
   putEdge(nodeU: N, nodeV: N): boolean;
 
@@ -54,17 +55,19 @@ export interface MutableGraph<N> extends Graph<N> {
    * Adds an edge connecting `endpoints` (in the order, if any, specified by
    * `endpoints` if one is not already present.
    *
-   * <p>If this graph is directed, `endpoints` must be ordered and the added edge will be
+   * If this graph is directed, `endpoints` must be ordered and the added edge will be
    * directed; if it is undirected, the added edge will be undirected.
    *
-   * <p>If this graph is directed, `endpoints` must be ordered.
+   * If this graph is directed, `endpoints` must be ordered.
    *
-   * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link addNode} each missing endpoint to the graph.
+   * If either or both endpoints are not already present in this graph, this method will silently
+   * {@link MutableGraph.addNode} each missing endpoint to the graph.
+   *
+   * Throws if the introduction of the edge would violate {@link BaseGraph.allowsSelfLoops}.
+   *
+   * Throws if the endpoints are unordered and the graph is directed.
    *
    * @returns `true` if the graph was modified as a result of this call
-   * throws IllegalArgumentException if the introduction of the edge would violate {@link allowsSelfLoops}
-   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    */
   putEdgeConnectingEndpoints(endpoints: EndpointPair<N>): boolean;
 
@@ -85,9 +88,10 @@ export interface MutableGraph<N> extends Graph<N> {
   /**
    * Removes the edge connecting `endpoints`, if it is present.
    *
-   * <p>If this graph is directed, `endpoints` must be ordered.
+   * If this graph is directed, `endpoints` must be ordered.
    *
-   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   * Throws if the endpoints are unordered and the graph is directed.
+   *
    * @returns `true` if the graph was modified as a result of this call
    */
   removeEdgeConnectingEndpoints(endpoints: EndpointPair<N>): boolean

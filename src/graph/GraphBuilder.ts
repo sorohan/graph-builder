@@ -27,17 +27,17 @@ import { ConfigurableMutableGraph } from "./ConfigurableMutableGraph";
  *
  * @remarks
  *
- * <p>A graph built by this class will have the following properties by default:
+ * A graph built by this class will have the following properties by default:
  *
  * <ul>
- *   <li>does not allow self-loops
- *   <li>orders {@link Graph.nodes} in the order in which the elements were added
+ *   <li>does not allow self-loops</li>
+ *   <li>orders {@link Graph.nodes} in the order in which the elements were added</li>
  * </ul>
  *
  * Example of use:
  *
  * ```typescript
- * MutableGraph<String> graph = GraphBuilder.undirected().allowsSelfLoops(true).build();
+ * const graph: MutableGraph<String> = GraphBuilder.undirected().allowsSelfLoops(true).build();
  * graph.putEdge("bread", "bread");
  * graph.putEdge("chocolate", "peanut butter");
  * graph.putEdge("peanut butter", "jelly");

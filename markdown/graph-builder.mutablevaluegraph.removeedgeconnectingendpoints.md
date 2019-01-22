@@ -4,7 +4,7 @@
 
 Removes the edge connecting `endpoints`<!-- -->, if it is present.
 
-<p>If this graph is directed, `endpoints` must be ordered.
+If this graph is directed, `endpoints` must be ordered.
 
 **Signature:**
 ```javascript
@@ -12,7 +12,7 @@ removeEdgeConnectingEndpoints(endpoints: EndpointPair<N>): V | undefined;
 ```
 **Returns:** `V | undefined`
 
-the value previously associated with the edge connecting `endpoints`<!-- -->, or null if there was no such edge.
+the value previously associated with the edge connecting `endpoints`<!-- -->, or undefined if there was no such edge.
 
 ## Parameters
 

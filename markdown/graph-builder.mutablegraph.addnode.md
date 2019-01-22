@@ -4,7 +4,7 @@
 
 Adds `node` if it is not already present.
 
-<p><b>Nodes must be unique</b>, just as `Map` keys must be. They must also be non-null.
+<b>Nodes must be unique</b>, just as `Map` keys must be.
 
 **Signature:**
 ```javascript

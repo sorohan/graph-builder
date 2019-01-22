@@ -4,11 +4,13 @@
 
 Adds an edge connecting `nodeU` to `nodeV` if one is not already present, and sets a value for that edge to `value` (overwriting the existing value, if any).
 
-<p>If the graph is directed, the resultant edge will be directed; otherwise, it will be undirected.
+If the graph is directed, the resultant edge will be directed; otherwise, it will be undirected.
 
-<p>Values do not have to be unique. However, values must be non-null.
+Values do not have to be unique.
 
-<p>If `nodeU` and `nodeV` are not already present in this graph, this method will silently addNode `nodeU` and `nodeV` to the graph.
+If `nodeU` and `nodeV` are not already present in this graph, this method will silently [MutableValueGraph.addNode](./graph-builder.mutablevaluegraph.addnode.md) `nodeU` and `nodeV` to the graph.
+
+Throws if the introduction of the edge would violate [BaseGraph.allowsSelfLoops](./graph-builder.basegraph.allowsselfloops.md)
 
 **Signature:**
 ```javascript
@@ -16,7 +18,7 @@ putEdgeValue(nodeU: N, nodeV: N, value: V): V | undefined;
 ```
 **Returns:** `V | undefined`
 
-the value previously associated with the edge connecting `nodeU` to `nodeV`<!-- -->, or null if there was no such edge. throws IllegalArgumentException if the introduction of the edge would violate allowsSelfLoops
+the value previously associated with the edge connecting `nodeU` to `nodeV`<!-- -->, or undefined if there was no such edge.
 
 ## Parameters
 

@@ -124,11 +124,7 @@ interface GraphConnections<N, V> {
 // @public
 interface MutableGraph<N> extends Graph<N> {
   addNode(node: N): boolean;
-  // WARNING: Unable to find referenced export "graph-builder#allowsSelfLoops"
-  // WARNING: Unable to find referenced export "graph-builder#addNode"
   putEdge(nodeU: N, nodeV: N): boolean;
-  // WARNING: Unable to find referenced export "graph-builder#allowsSelfLoops"
-  // WARNING: Unable to find referenced export "graph-builder#addNode"
   putEdgeConnectingEndpoints(endpoints: EndpointPair<N>): boolean;
   removeEdge(nodeU: N, nodeV: N): boolean;
   removeEdgeConnectingEndpoints(endpoints: EndpointPair<N>): boolean;
@@ -138,11 +134,7 @@ interface MutableGraph<N> extends Graph<N> {
 // @public
 interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
   addNode(node: N): boolean;
-  // WARNING: Unable to find referenced export "graph-builder#allowsSelfLoops"
-  // WARNING: Unable to find referenced export "graph-builder#addNode"
   putEdgeValue(nodeU: N, nodeV: N, value: V): V | undefined;
-  // WARNING: Unable to find referenced export "graph-builder#allowsSelfLoops"
-  // WARNING: Unable to find referenced export "graph-builder#addNode"
   putEdgeValueConnectingEndpoints(endpoints: EndpointPair<N>, value: V): V | undefined;
   removeEdge(nodeU: N, nodeV: N): V | undefined;
   removeEdgeConnectingEndpoints(endpoints: EndpointPair<N>): V | undefined;

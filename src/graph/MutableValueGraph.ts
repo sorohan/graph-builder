@@ -30,7 +30,7 @@ export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
   /**
    * Adds `node` if it is not already present.
    *
-   * <p><b>Nodes must be unique</b>, just as `Map` keys must be. They must also be non-null.
+   * <b>Nodes must be unique</b>, just as `Map` keys must be.
    *
    * @returns `true` if the graph was modified as a result of this call
    */
@@ -40,18 +40,18 @@ export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * Adds an edge connecting `nodeU` to `nodeV` if one is not already present, and
    * sets a value for that edge to `value` (overwriting the existing value, if any).
    *
-   * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
+   * If the graph is directed, the resultant edge will be directed; otherwise, it will be
    * undirected.
    *
-   * <p>Values do not have to be unique. However, values must be non-null.
+   * Values do not have to be unique.
    *
-   * <p>If `nodeU` and `nodeV` are not already present in this graph, this method will
-   * silently {@link addNode} `nodeU` and `nodeV` to the graph.
+   * If `nodeU` and `nodeV` are not already present in this graph, this method will
+   * silently {@link MutableValueGraph.addNode} `nodeU` and `nodeV` to the graph.
+   *
+   * Throws if the introduction of the edge would violate {@link BaseGraph.allowsSelfLoops}
    *
    * @returns the value previously associated with the edge connecting `nodeU` to
-   *     `nodeV`, or null if there was no such edge.
-   * throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     allowsSelfLoops}
+   *     `nodeV`, or undefined if there was no such edge.
    */
   putEdgeValue(nodeU: N, nodeV: N, value: V): V | undefined;
 
@@ -59,21 +59,23 @@ export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * Adds an edge connecting `endpoints` if one is not already present, and sets a value for
    * that edge to `value` (overwriting the existing value, if any).
    *
-   * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
+   * If the graph is directed, the resultant edge will be directed; otherwise, it will be
    * undirected.
    *
-   * <p>If this graph is directed, `endpoints` must be ordered.
+   * If this graph is directed, `endpoints` must be ordered.
    *
-   * <p>Values do not have to be unique. However, values must be non-null.
+   * Values do not have to be unique.
    *
-   * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link addNode} each missing endpoint to the graph.
+   * If either or both endpoints are not already present in this graph, this method will silently
+   * {@link MutableValueGraph.addNode} each missing endpoint to the graph.
+   *
+   * Throws if the introduction of the edge would violate
+   * {@link BaseGraph.allowsSelfLoops}
+   *
+   * Throws if the endpoints are unordered and the graph is directed
    *
    * @returns the value previously associated with the edge connecting `nodeU` to
-   *     `nodeV`, or null if there was no such edge.
-   * throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     allowsSelfLoops}
-   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   *     `nodeV`, or undefined if there was no such edge.
    */
   putEdgeValueConnectingEndpoints(endpoints: EndpointPair<N>, value: V): V | undefined
 
@@ -88,16 +90,16 @@ export interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * Removes the edge connecting `nodeU` to `nodeV`, if it is present.
    *
    * @returns the value previously associated with the edge connecting `nodeU` to
-   *     `nodeV`, or null if there was no such edge.
+   *     `nodeV`, or undefined if there was no such edge.
    */
   removeEdge(nodeU: N, nodeV: N): V | undefined;
 
   /**
    * Removes the edge connecting `endpoints`, if it is present.
    *
-   * <p>If this graph is directed, `endpoints` must be ordered.
+   * If this graph is directed, `endpoints` must be ordered.
    *
-   * @returns the value previously associated with the edge connecting `endpoints`, or null if
+   * @returns the value previously associated with the edge connecting `endpoints`, or undefined if
    *     there was no such edge.
    */
   removeEdgeConnectingEndpoints(endpoints: EndpointPair<N>): V | undefined

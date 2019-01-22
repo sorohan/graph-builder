@@ -4,9 +4,9 @@
 
 Removes the edge connecting `endpoints`<!-- -->, if it is present.
 
-<p>If this graph is directed, `endpoints` must be ordered.
+If this graph is directed, `endpoints` must be ordered.
 
-throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+Throws if the endpoints are unordered and the graph is directed.
 
 **Signature:**
 ```javascript
