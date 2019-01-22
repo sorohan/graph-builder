@@ -31,7 +31,7 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
   // Graph-level accessors
   //
 
-  /** Returns all nodes in this graph, in the order specified by {@link nodeOrder}. */
+  /** Returns all nodes in this graph, in the order specified by {@link BaseGraph.nodeOrder}. */
   nodes(): Set<N>;
 
   /** Returns all edges in this graph. */
@@ -50,12 +50,11 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
 
   /**
    * Returns true if this graph allows self-loops (edges that connect a node to itself). Attempting
-   * to add a self-loop to a graph that does not allow them will throw an {@link
-   * IllegalArgumentException}.
+   * to add a self-loop to a graph that does not allow them will throw an error.
    */
   allowsSelfLoops(): boolean;
 
-  /** Returns the order of iteration for the elements of {@link nodes}. */
+  /** Returns the order of iteration for the elements of {@link BaseGraph.nodes}. */
   nodeOrder(): ElementOrder<N>;
 
   //
@@ -65,7 +64,7 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
   /**
    * Returns the nodes which have an incident edge in common with `node` in this graph.
    *
-   * throws IllegalArgumentException if `node` is not an element of this graph
+   * Throws an error if `node` is not an element of this graph.
    */
   adjacentNodes(node: N): Set<N>;
 
@@ -73,9 +72,9 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
    * Returns all nodes in this graph adjacent to `node` which can be reached by traversing
    * `node`'s incoming edges <i>against</i> the direction (if any) of the edge.
    *
-   * <p>In an undirected graph, this is equivalent to {@link adjacentNodes}.
+   * In an undirected graph, this is equivalent to {@link BaseGraph.adjacentNodes}.
    *
-   * throws IllegalArgumentException if `node` is not an element of this graph
+   * Throws an error if `node` is not an element of this graph.
    */
   predecessors(node: N): Set<N>;
 
@@ -83,19 +82,19 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
    * Returns all nodes in this graph adjacent to `node` which can be reached by traversing
    * `node`'s outgoing edges in the direction (if any) of the edge.
    *
-   * <p>In an undirected graph, this is equivalent to {@link adjacentNodes}.
+   * In an undirected graph, this is equivalent to {@link BaseGraph.adjacentNodes}.
    *
-   * <p>This is <i>not</i> the same as "all nodes reachable from `node` by following outgoing
+   * This is <i>not</i> the same as "all nodes reachable from `node` by following outgoing
    * edges". For that functionality, see {@link Graphs.reachableNodes}.
    *
-   * throws IllegalArgumentException if `node` is not an element of this graph
+   * Throws an error if `node` is not an element of this graph.
    */
   successors(node: N): Set<N>;
 
   /**
    * Returns the edges in this graph whose endpoints include `node`.
    *
-   * throws IllegalArgumentException if `node` is not an element of this graph
+   * Throws an error if `node` is not an element of this graph.
    */
   incidentEdges(node: N): Set<EndpointPair<N>>;
 
@@ -103,34 +102,28 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
    * Returns the count of `node`'s incident edges, counting self-loops twice (equivalently,
    * the number of times an edge touches `node`).
    *
-   * <p>For directed graphs, this is equal to `inDegree(node) + outDegree(node)`.
+   * For directed graphs, this is equal to `inDegree(node) + outDegree(node)`.
    *
-   * <p>For undirected graphs, this is equal to `incidentEdges(node).size()` + (number of
+   * For undirected graphs, this is equal to `incidentEdges(node).size()` + (number of
    * self-loops incident to `node`).
    *
-   * <p>If the count is greater than `Integer.MAX_VALUE`, returns `Integer.MAX_VALUE`.
-   *
-   * throws IllegalArgumentException if `node` is not an element of this graph
+   * Throws an error if `node` is not an element of this graph.
    */
   degree(node: N): number;
 
   /**
    * Returns the count of `node`'s incoming edges (equal to `predecessors(node).size()`)
-   * in a directed graph. In an undirected graph, returns the {@link degree}.
+   * in a directed graph. In an undirected graph, returns the {@link BaseGraph.degree}.
    *
-   * <p>If the count is greater than `Integer.MAX_VALUE`, returns `Integer.MAX_VALUE`.
-   *
-   * throws IllegalArgumentException if `node` is not an element of this graph
+   * Throws an error if `node` is not an element of this graph.
    */
   inDegree(node: N): number;
 
   /**
    * Returns the count of `node`'s outgoing edges (equal to `successors(node).size()`)
-   * in a directed graph. In an undirected graph, returns the {@link degree}.
+   * in a directed graph. In an undirected graph, returns the {@link BaseGraph.degree}.
    *
-   * <p>If the count is greater than `Integer.MAX_VALUE`, returns `Integer.MAX_VALUE`.
-   *
-   * throws IllegalArgumentException if `node` is not an element of this graph
+   * Throws an error if `node` is not an element of this graph.
    */
   outDegree(node: N): number;
 
@@ -138,7 +131,7 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
    * Returns true if there is an edge that directly connects `nodeU` to `nodeV`. This is
    * equivalent to `nodes().contains(nodeU) && successors(nodeU).contains(nodeV)`.
    *
-   * <p>In an undirected graph, this is equal to `hasEdgeConnecting(nodeV, nodeU)`.
+   * In an undirected graph, this is equal to `hasEdgeConnecting(nodeV, nodeU)`.
    */
   hasEdge(nodeU: N, nodeV: N): boolean;
 
@@ -147,9 +140,9 @@ export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunctio
    * any, specified by `endpoints`). This is equivalent to
    * `edges().contains(endpoints)`.
    *
-   * <p>Unlike the other `EndpointPair`-accepting methods, this method does not throw if the
+   * Unlike the other `EndpointPair`-accepting methods, this method does not throw if the
    * endpoints are unordered; it simply returns false. This is for consistency with the behavior of
-   * {@link Collection.contains} (which does not generally throw if the object cannot be
+   * Set.has (which does not generally throw if the object cannot be
    * present in the collection), and the desire to have this method's behavior be compatible with
    * `edges().contains(endpoints)`.
    */

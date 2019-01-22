@@ -2,7 +2,7 @@
 
 # ValueGraphBuilder.allowsSelfLoops method
 
-Specifies whether the graph will allow self-loops (edges that connect a node to itself). Attempting to add a self-loop to a graph that does not allow them will throw an UnsupportedOperationException<!-- -->.
+Specifies whether the graph will allow self-loops (edges that connect a node to itself). Attempting to add a self-loop to a graph that does not allow them will throw an error.
 
 **Signature:**
 ```javascript

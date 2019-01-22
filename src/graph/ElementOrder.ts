@@ -42,11 +42,11 @@ export enum Type {
  *
  * @remarks
  *
- * <p>Example usage:
+ * Example usage:
  *
  * ```typescript
- * MutableGraph<Integer> graph =
- *     GraphBuilder.directed().nodeOrder(ElementOrder.<Integer>natural()).build();
+ * const graph: MutableGraph<number> =
+ *     GraphBuilder.directed().nodeOrder(ElementOrder.natural<number>()).build();
  * }
  * ```
  *
@@ -84,7 +84,7 @@ export class ElementOrder<T> {
   /**
    * Returns the {@link Comparator} used.
    *
-   * throws UnsupportedOperationException if comparator is not defined
+   * Throws an error if comparator is not defined
    */
   public getComparator(): Comparator<T> {
     if (this.comparator) {
@@ -105,18 +105,6 @@ export class ElementOrder<T> {
     const other = obj;
     return (this.type == other.type) && this.comparator === other.getComparator();
   }
-
-  // public int hashCode() {
-  //   return Objects.hashCode(type, comparator);
-  // }
-
-  // public String toString() {
-  //   ToStringHelper helper = MoreObjects.toStringHelper(this).add("type", type);
-  //   if (comparator != null) {
-  //     helper.add("comparator", comparator);
-  //   }
-  //   return helper.toString();
-  // }
 
   /** Returns an empty mutable map whose keys will respect this {@link ElementOrder}. */
   createMap<K extends T, V>(expectedSize: number): Map<K, V> {

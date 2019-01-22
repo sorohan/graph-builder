@@ -4,13 +4,11 @@
 
 Returns the count of `node`<!-- -->'s incident edges, counting self-loops twice (equivalently, the number of times an edge touches `node`<!-- -->).
 
-<p>For directed graphs, this is equal to `inDegree(node) + outDegree(node)`<!-- -->.
+For directed graphs, this is equal to `inDegree(node) + outDegree(node)`<!-- -->.
 
-<p>For undirected graphs, this is equal to `incidentEdges(node).size()` + (number of self-loops incident to `node`<!-- -->).
+For undirected graphs, this is equal to `incidentEdges(node).size()` + (number of self-loops incident to `node`<!-- -->).
 
-<p>If the count is greater than `Integer.MAX_VALUE`<!-- -->, returns `Integer.MAX_VALUE`<!-- -->.
-
-throws IllegalArgumentException if `node` is not an element of this graph
+Throws an error if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript

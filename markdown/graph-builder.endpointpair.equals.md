@@ -2,7 +2,7 @@
 
 # EndpointPair.equals method
 
-Two ordered [EndpointPair](./graph-builder.endpointpair.md)<!-- -->s are equal if their source and target are equal. Two unordered [EndpointPair](./graph-builder.endpointpair.md)<!-- -->s are equal if they contain the same nodes. An ordered [EndpointPair](./graph-builder.endpointpair.md) is never equal to an unordered [EndpointPair](./graph-builder.endpointpair.md)<!-- -->.
+Two ordered [EndpointPair](./graph-builder.endpointpair.md)<!-- -->s are equal if their [EndpointPair.source](./graph-builder.endpointpair.source.md) and [EndpointPair.target](./graph-builder.endpointpair.target.md) are equal. Two unordered [EndpointPair](./graph-builder.endpointpair.md)<!-- -->s are equal if they contain the same nodes. An ordered [EndpointPair](./graph-builder.endpointpair.md) is never equal to an unordered [EndpointPair](./graph-builder.endpointpair.md)<!-- -->.
 
 **Signature:**
 ```javascript

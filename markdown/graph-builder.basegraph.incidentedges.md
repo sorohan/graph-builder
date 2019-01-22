@@ -4,7 +4,7 @@
 
 Returns the edges in this graph whose endpoints include `node`<!-- -->.
 
-throws IllegalArgumentException if `node` is not an element of this graph
+Throws an error if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript

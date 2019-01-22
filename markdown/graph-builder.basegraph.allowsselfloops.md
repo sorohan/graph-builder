@@ -2,7 +2,7 @@
 
 # BaseGraph.allowsSelfLoops method
 
-Returns true if this graph allows self-loops (edges that connect a node to itself). Attempting to add a self-loop to a graph that does not allow them will throw an IllegalArgumentException<!-- -->.
+Returns true if this graph allows self-loops (edges that connect a node to itself). Attempting to add a self-loop to a graph that does not allow them will throw an error.
 
 **Signature:**
 ```javascript

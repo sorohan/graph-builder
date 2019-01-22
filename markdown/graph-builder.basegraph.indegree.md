@@ -2,11 +2,9 @@
 
 # BaseGraph.inDegree method
 
-Returns the count of `node`<!-- -->'s incoming edges (equal to `predecessors(node).size()`<!-- -->) in a directed graph. In an undirected graph, returns the degree<!-- -->.
+Returns the count of `node`<!-- -->'s incoming edges (equal to `predecessors(node).size()`<!-- -->) in a directed graph. In an undirected graph, returns the [BaseGraph.degree](./graph-builder.basegraph.degree.md)<!-- -->.
 
-<p>If the count is greater than `Integer.MAX_VALUE`<!-- -->, returns `Integer.MAX_VALUE`<!-- -->.
-
-throws IllegalArgumentException if `node` is not an element of this graph
+Throws an error if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript

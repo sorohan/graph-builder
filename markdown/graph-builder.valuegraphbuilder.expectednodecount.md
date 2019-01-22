@@ -4,7 +4,7 @@
 
 Specifies the expected number of nodes in the graph.
 
-throws an error if `expectedNodeCount` is negative
+Throws an error if `expectedNodeCount` is negative.
 
 **Signature:**
 ```javascript

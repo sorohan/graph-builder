@@ -4,11 +4,11 @@
 
 Returns all nodes in this graph adjacent to `node` which can be reached by traversing `node`<!-- -->'s outgoing edges in the direction (if any) of the edge.
 
-<p>In an undirected graph, this is equivalent to adjacentNodes<!-- -->.
+In an undirected graph, this is equivalent to [BaseGraph.adjacentNodes](./graph-builder.basegraph.adjacentnodes.md)<!-- -->.
 
-<p>This is <i>not</i> the same as "all nodes reachable from `node` by following outgoing edges". For that functionality, see Graphs.reachableNodes<!-- -->.
+This is <i>not</i> the same as "all nodes reachable from `node` by following outgoing edges". For that functionality, see Graphs.reachableNodes<!-- -->.
 
-throws IllegalArgumentException if `node` is not an element of this graph
+Throws an error if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript

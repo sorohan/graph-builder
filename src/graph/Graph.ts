@@ -33,7 +33,7 @@ import { BaseGraph } from "./BaseGraph";
  * href="https://github.com/google/guava/wiki/GraphsExplained#choosing-the-right-graph-type">
  * "Choosing the right graph type"</a> section of the Guava User Guide for more details.
  *
- * **Capabilities**
+ * <b>Capabilities</b>
  *
  * `Graph` supports the following use cases (<a
  * href="https://github.com/google/guava/wiki/GraphsExplained#definitions">definitions of
@@ -49,7 +49,7 @@ import { BaseGraph } from "./BaseGraph";
  * `Graph` explicitly does not support parallel edges, and forbids implementations or
  * extensions with parallel edges. If you need parallel edges, use {@link Network}.
  *
- * **Building a `Graph`**
+ * <b>Building a `Graph`</b>
  *
  * The implementation classes that are provided are not public, by design. To
  * create an instance of one of the built-in implementations of `Graph`, use the {@link

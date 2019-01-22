@@ -2,7 +2,7 @@
 
 # ValueGraphBuilder.nodeOrder method
 
-Specifies the order of iteration for the elements of Graph.nodes<!-- -->.
+Specifies the order of iteration for the elements of [BaseGraph.nodes](./graph-builder.basegraph.nodes.md)<!-- -->.
 
 **Signature:**
 ```javascript

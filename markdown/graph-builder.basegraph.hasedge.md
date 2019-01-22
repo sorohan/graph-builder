@@ -4,7 +4,7 @@
 
 Returns true if there is an edge that directly connects `nodeU` to `nodeV`<!-- -->. This is equivalent to `nodes().contains(nodeU) && successors(nodeU).contains(nodeV)`<!-- -->.
 
-<p>In an undirected graph, this is equal to `hasEdgeConnecting(nodeV, nodeU)`<!-- -->.
+In an undirected graph, this is equal to `hasEdgeConnecting(nodeV, nodeU)`<!-- -->.
 
 **Signature:**
 ```javascript

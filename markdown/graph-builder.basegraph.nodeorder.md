@@ -2,7 +2,7 @@
 
 # BaseGraph.nodeOrder method
 
-Returns the order of iteration for the elements of nodes<!-- -->.
+Returns the order of iteration for the elements of [BaseGraph.nodes](./graph-builder.basegraph.nodes.md)<!-- -->.
 
 **Signature:**
 ```javascript

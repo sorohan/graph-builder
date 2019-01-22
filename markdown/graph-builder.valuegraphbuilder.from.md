@@ -4,7 +4,7 @@
 
 Returns a [ValueGraphBuilder](./graph-builder.valuegraphbuilder.md) initialized with all properties queryable from `graph`<!-- -->.
 
-<p>The "queryable" properties are those that are exposed through the [ValueGraph](./graph-builder.valuegraph.md) interface, such as ValueGraph.isDirected<!-- -->. Other properties, such as expectedNodeCount<!-- -->, are not set in the new builder.
+<p>The "queryable" properties are those that are exposed through the [ValueGraph](./graph-builder.valuegraph.md) interface, such as [BaseGraph.isDirected](./graph-builder.basegraph.isdirected.md)<!-- -->. Other properties, such as [ValueGraphBuilder.expectedNodeCount](./graph-builder.valuegraphbuilder.expectednodecount.md)<!-- -->, are not set in the new builder.
 
 **Signature:**
 ```javascript

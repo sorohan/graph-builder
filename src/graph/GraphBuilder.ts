@@ -31,7 +31,7 @@ import { ConfigurableMutableGraph } from "./ConfigurableMutableGraph";
  *
  * <ul>
  *   <li>does not allow self-loops</li>
- *   <li>orders {@link Graph.nodes} in the order in which the elements were added</li>
+ *   <li>orders {@link BaseGraph.nodes} in the order in which the elements were added</li>
  * </ul>
  *
  * Example of use:
@@ -61,7 +61,7 @@ export class GraphBuilder<N> extends AbstractGraphBuilder<N> {
    * Returns a {@link GraphBuilder} initialized with all properties queryable from `graph`.
    *
    * <p>The "queryable" properties are those that are exposed through the {@link Graph} interface,
-   * such as {@link Graph.isDirected}. Other properties, such as {@link expectedNodeCount},
+   * such as {@link BaseGraph.isDirected}. Other properties, such as {@link GraphBuilder.expectedNodeCount},
    * are not set in the new builder.
    */
   public static from<T>(graph: Graph<T>): GraphBuilder<T> {
@@ -89,7 +89,7 @@ export class GraphBuilder<N> extends AbstractGraphBuilder<N> {
     return this;
   }
 
-  /** Specifies the order of iteration for the elements of {@link Graph.nodes}. */
+  /** Specifies the order of iteration for the elements of {@link BaseGraph.nodes}. */
   public nodeOrder(nodeOrder: ElementOrder<N>): GraphBuilder<N> {
     this.nodeOrderValue = nodeOrder;
     return this;

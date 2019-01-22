@@ -2,9 +2,9 @@
 
 # ElementOrder.getComparator method
 
-Returns the Comparator used.
+Returns the [Comparator](./graph-builder.comparator.md) used.
 
-throws UnsupportedOperationException if comparator is not defined
+Throws an error if comparator is not defined
 
 **Signature:**
 ```javascript

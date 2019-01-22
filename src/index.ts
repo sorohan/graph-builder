@@ -10,3 +10,4 @@ export { SuccessorsFunction } from './graph/SuccessorsFunction';
 export { PredecessorsFunction } from './graph/PredecessorsFunction';
 export { EndpointPair } from './graph/EndpointPair';
 export { ElementOrder } from './graph/ElementOrder';
+export { Comparator } from './collect/Comparator';

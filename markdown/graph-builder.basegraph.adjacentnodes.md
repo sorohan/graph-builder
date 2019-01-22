@@ -4,7 +4,7 @@
 
 Returns the nodes which have an incident edge in common with `node` in this graph.
 
-throws IllegalArgumentException if `node` is not an element of this graph
+Throws an error if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript

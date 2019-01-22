@@ -2,7 +2,7 @@
 
 # BaseGraph.nodes method
 
-Returns all nodes in this graph, in the order specified by nodeOrder<!-- -->.
+Returns all nodes in this graph, in the order specified by [BaseGraph.nodeOrder](./graph-builder.basegraph.nodeorder.md)<!-- -->.
 
 **Signature:**
 ```javascript

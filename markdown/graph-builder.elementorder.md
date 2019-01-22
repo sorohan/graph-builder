@@ -17,7 +17,7 @@ Used to represent the order of elements in a data structure that supports differ
 |  [`constructor(type, comparator)`](./graph-builder.elementorder.constructor.md) |  |  | Constructs a new instance of the [ElementOrder](./graph-builder.elementorder.md) class |
 |  [`createMap(expectedSize)`](./graph-builder.elementorder.createmap.md) |  | `Map<K, V>` | Returns an empty mutable map whose keys will respect this [ElementOrder](./graph-builder.elementorder.md)<!-- -->. |
 |  [`equals(obj)`](./graph-builder.elementorder.equals.md) |  | `boolean` |  |
-|  [`getComparator()`](./graph-builder.elementorder.getcomparator.md) |  | `Comparator<T>` | Returns the Comparator used.<p/>throws UnsupportedOperationException if comparator is not defined |
+|  [`getComparator()`](./graph-builder.elementorder.getcomparator.md) |  | `Comparator<T>` | Returns the [Comparator](./graph-builder.comparator.md) used.<p/>Throws an error if comparator is not defined |
 |  [`insertion()`](./graph-builder.elementorder.insertion.md) |  | `ElementOrder<S>` | Returns an instance which specifies that insertion ordering is guaranteed. |
 |  [`natural()`](./graph-builder.elementorder.natural.md) |  | `ElementOrder<S>` | Returns an instance which specifies that the natural ordering of the elements is guaranteed. |
 |  [`sorted(comparator)`](./graph-builder.elementorder.sorted.md) |  | `ElementOrder<S>` | Returns an instance which specifies that the ordering of the elements is guaranteed to be determined by `comparator`<!-- -->. |
@@ -25,10 +25,10 @@ Used to represent the order of elements in a data structure that supports differ
 
 ## Remarks
 
-<p>Example usage:
+Example usage:
 ```javascript
-MutableGraph<Integer> graph =
-    GraphBuilder.directed().nodeOrder(ElementOrder.<Integer>natural()).build();
+const graph: MutableGraph<number> =
+    GraphBuilder.directed().nodeOrder(ElementOrder.natural<number>()).build();
 }
 
 ```

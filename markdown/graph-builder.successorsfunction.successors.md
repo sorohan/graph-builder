@@ -4,15 +4,13 @@
 
 Returns all nodes in this graph adjacent to `node` which can be reached by traversing `node`<!-- -->'s outgoing edges in the direction (if any) of the edge.
 
-<p>This is <i>not</i> the same as "all nodes reachable from `node` by following outgoing edges". For that functionality, see Graphs.reachableNodes<!-- -->.
+This is <i>not</i> the same as "all nodes reachable from `node` by following outgoing edges". For that functionality, see Graphs.reachableNodes<!-- -->.
 
-<p>Some algorithms that operate on a `SuccessorsFunction` may produce undesired results if the returned Iterable contains duplicate elements. Implementations of such algorithms should document their behavior in the presence of duplicates.
+Some algorithms that operate on a `SuccessorsFunction` may produce undesired results if the returned `Iterable` contains duplicate elements. Implementations of such algorithms should document their behavior in the presence of duplicates.
 
-<p>The elements of the returned `Iterable` must each be:
+The elements of the returned `Iterable` must each be unique to the graph.
 
-<ul> <li>Non-null <li>Usable as `Map` keys (see the Guava User Guide's section on <a href="https://github.com/google/guava/wiki/GraphsExplained#graph-elements-nodes-and-edges"> graph elements</a> for details) </ul>
-
-throws IllegalArgumentException if `node` is not an element of this graph
+Throws if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript

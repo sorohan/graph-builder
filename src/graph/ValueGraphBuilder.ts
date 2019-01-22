@@ -30,7 +30,7 @@ import { ConfigurableMutableValueGraph } from "./ConfigurableMutableValueGraph";
  * A graph built by this class will have the following properties by default:
  *
  *  - does not allow self-loops
- *  - orders {@link Graph.nodes} in the order in which the elements were added
+ *  - orders {@link BaseGraph.nodes} in the order in which the elements were added
  *
  * Example of use:
  *
@@ -66,8 +66,8 @@ export class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
    * `graph`.
    *
    * <p>The "queryable" properties are those that are exposed through the {@link ValueGraph}
-   * interface, such as {@link ValueGraph.isDirected}. Other properties, such as {@link
-   * expectedNodeCount}, are not set in the new builder.
+   * interface, such as {@link BaseGraph.isDirected}. Other properties, such as {@link
+   * ValueGraphBuilder.expectedNodeCount}, are not set in the new builder.
    */
   public static from<N, V>(graph: ValueGraph<N, V>): ValueGraphBuilder<N, V> {
     return new ValueGraphBuilder<N, V>(graph.isDirected())
@@ -77,8 +77,7 @@ export class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
 
   /**
    * Specifies whether the graph will allow self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a graph that does not allow them will throw an {@link
-   * UnsupportedOperationException}.
+   * Attempting to add a self-loop to a graph that does not allow them will throw an error.
    */
   public allowsSelfLoops(allowsSelfLoops: boolean): ValueGraphBuilder<N, V> {
     this.allowsSelfLoopsValue = allowsSelfLoops;
@@ -88,14 +87,14 @@ export class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
   /**
    * Specifies the expected number of nodes in the graph.
    *
-   * throws an error if `expectedNodeCount` is negative
+   * Throws an error if `expectedNodeCount` is negative.
    */
   public expectedNodeCount(expectedNodeCount: number): ValueGraphBuilder<N, V> {
     this.expectedNodeCountValue = expectedNodeCount;
     return this;
   }
 
-  /** Specifies the order of iteration for the elements of {@link Graph.nodes}. */
+  /** Specifies the order of iteration for the elements of {@link BaseGraph.nodes}. */
   public nodeOrder(nodeOrder: ElementOrder<N>): ValueGraphBuilder<N, V> {
     this.nodeOrderValue = nodeOrder;
     return this;

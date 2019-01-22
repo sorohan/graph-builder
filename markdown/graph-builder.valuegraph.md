@@ -21,7 +21,7 @@ A graph is composed of a set of nodes and a set of edges connecting pairs of nod
 
 There are three primary interfaces provided to represent graphs. In order of increasing complexity they are: [Graph](./graph-builder.graph.md)<!-- -->, [ValueGraph](./graph-builder.valuegraph.md)<!-- -->, and Network<!-- -->. You should generally prefer the simplest interface that satisfies your use case. See the <a href="https://github.com/google/guava/wiki/GraphsExplained#choosing-the-right-graph-type"> "Choosing the right graph type"</a> section of the Guava User Guide for more details.
 
-\*\*Capabilities\*\*
+<b>Capabilities</b>
 
 `ValueGraph` supports the following use cases (<a href="https://github.com/google/guava/wiki/GraphsExplained#definitions">definitions of terms</a>):
 
@@ -29,7 +29,7 @@ There are three primary interfaces provided to represent graphs. In order of inc
 
 `ValueGraph`<!-- -->, as a subtype of `Graph`<!-- -->, explicitly does not support parallel edges, and forbids implementations or extensions with parallel edges. If you need parallel edges, use Network<!-- -->. (You can use a positive `Integer` edge value as a loose representation of edge multiplicity, but the `*degree()` and mutation methods will not reflect your interpretation of the edge value as its multiplicity.)
 
-\*\*Building a `ValueGraph`<!-- -->\*\*
+<b>Building a `ValueGraph`</b>
 
 The implementation classes that are provided are not public, by design. To create an instance of one of the built-in implementations of `ValueGraph`<!-- -->, use the [ValueGraphBuilder](./graph-builder.valuegraphbuilder.md) class:
 ```javascript

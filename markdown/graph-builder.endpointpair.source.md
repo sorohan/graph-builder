@@ -2,9 +2,9 @@
 
 # EndpointPair.source method
 
-If this [EndpointPair](./graph-builder.endpointpair.md) isOrdered<!-- -->, returns the node which is the source.
+If this [EndpointPair](./graph-builder.endpointpair.md) [EndpointPair.isOrdered](./graph-builder.endpointpair.isordered.md)<!-- -->, returns the node which is the source.
 
-throws UnsupportedOperationException if this [EndpointPair](./graph-builder.endpointpair.md) is not ordered
+Throws an error if this [EndpointPair](./graph-builder.endpointpair.md) is not ordered.
 
 **Signature:**
 ```javascript

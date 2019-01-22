@@ -35,7 +35,7 @@ import { EndpointPair } from "./EndpointPair";
  * href="https://github.com/google/guava/wiki/GraphsExplained#choosing-the-right-graph-type">
  * "Choosing the right graph type"</a> section of the Guava User Guide for more details.
  *
- * **Capabilities**
+ * <b>Capabilities</b>
  *
  * `ValueGraph` supports the following use cases (<a
  * href="https://github.com/google/guava/wiki/GraphsExplained#definitions">definitions of
@@ -55,7 +55,7 @@ import { EndpointPair } from "./EndpointPair";
  * edge multiplicity, but the `*degree()` and mutation methods will not reflect your
  * interpretation of the edge value as its multiplicity.)
  *
- * **Building a `ValueGraph`**
+ * <b>Building a `ValueGraph`</b>
  *
  * The implementation classes that are provided are not public, by design. To
  * create an instance of one of the built-in implementations of `ValueGraph`, use the {@link

@@ -20,11 +20,11 @@ import { Graph } from "./Graph";
 
 /**
  * An immutable pair representing the two endpoints of an edge in a graph. The {@link EndpointPair}
- * of a directed edge is an ordered pair of nodes ({@link source} and {@link target}). The
- * {@link EndpointPair} of an undirected edge is an unordered pair of nodes ({@link nodeU} and
- * {@link nodeV}).
+ * of a directed edge is an ordered pair of nodes ({@link EndpointPair.source} and
+ * {@link EndpointPair.target}). The {@link EndpointPair} of an undirected edge is an
+ * unordered pair of nodes ({@link EndpointPair.nodeU} and {@link EndpointPair.nodeV}).
  *
- * <p>The edge is a self-loop if, and only if, the two endpoints are equal.
+ * The edge is a self-loop if, and only if, the two endpoints are equal.
  *
  * @public
  */
@@ -54,23 +54,23 @@ export abstract class EndpointPair<N> implements Iterable<N> {
   // }
 
   /**
-   * If this {@link EndpointPair} {@link isOrdered}, returns the node which is the source.
+   * If this {@link EndpointPair} {@link EndpointPair.isOrdered}, returns the node which is the source.
    *
-   * throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
+   * Throws an error if this {@link EndpointPair} is not ordered.
    */
   public abstract source(): N;
 
   /**
-   * If this {@link EndpointPair} {@link isOrdered}, returns the node which is the target.
+   * If this {@link EndpointPair} {@link EndpointPair.isOrdered}, returns the node which is the target.
    *
-   * throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
+   * Throws an error if this {@link EndpointPair} is not ordered.
    */
   public abstract target(): N;
 
   /**
    * Returns the node that is adjacent to `node` along the origin edge.
    *
-   * throws IllegalArgumentException if this {@link EndpointPair} does not contain `node`
+   * Throws an error if this {@link EndpointPair} does not contain `node`.
    */
   public adjacentNode(node: N): N {
     if (node === this.nodeU) {
@@ -88,16 +88,16 @@ export abstract class EndpointPair<N> implements Iterable<N> {
    */
   public abstract isOrdered(): boolean;
 
-  /** Iterates in the order {@link nodeU}, {@link nodeV}. */
+  /** Iterates in the order {@link EndpointPair.nodeU}, {@link EndpointPair.nodeV}. */
   [Symbol.iterator]() {
-     // @todo: convert to Itera
     return [this.nodeU, this.nodeV][Symbol.iterator]();
   }
 
   /**
-   * Two ordered {@link EndpointPair}s are equal if their {@link source} and {@link target}
-   * are equal. Two unordered {@link EndpointPair}s are equal if they contain the same nodes. An
-   * ordered {@link EndpointPair} is never equal to an unordered {@link EndpointPair}.
+   * Two ordered {@link EndpointPair}s are equal if their {@link EndpointPair.source}
+   * and {@link EndpointPair.target} are equal. Two unordered {@link EndpointPair}s are
+   * equal if they contain the same nodes. An ordered {@link EndpointPair} is never
+   * equal to an unordered {@link EndpointPair}.
    */
   public abstract equals(obj?: Object): boolean
 }
@@ -130,10 +130,6 @@ class Ordered<N> extends EndpointPair<N> {
 
     return this.source() === other.source() && this.target() === other.target();
   }
-
-  // public hashCode(): number {
-  //   return Objects.hashCode(source(), target());
-  // }
 
   public toString(): string {
     return "<" + this.source() + " -> " + this.target() + ">";
@@ -181,10 +177,6 @@ class Unordered<N> extends EndpointPair<N> {
     }
     return this.nodeU === other.nodeV && this.nodeV === other.nodeU; // check condition2
   }
-
-  // public int hashCode() {
-  //   return nodeU().hashCode() + nodeV().hashCode();
-  // }
 
   public toString(): string {
     return "[" + this.nodeU + ", " + this.nodeV + "]";

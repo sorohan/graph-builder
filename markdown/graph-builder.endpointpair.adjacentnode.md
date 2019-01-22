@@ -4,7 +4,7 @@
 
 Returns the node that is adjacent to `node` along the origin edge.
 
-throws IllegalArgumentException if this [EndpointPair](./graph-builder.endpointpair.md) does not contain `node`
+Throws an error if this [EndpointPair](./graph-builder.endpointpair.md) does not contain `node`<!-- -->.
 
 **Signature:**
 ```javascript
