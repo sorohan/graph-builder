@@ -2,9 +2,9 @@
 
 # ValueGraph.edgeValue method
 
-Returns the value of the edge that connects `nodeU` to `nodeV` (in the order, if any, specified by `endpoints`<!-- -->), if one is present; otherwise, returns `Optional.empty()`<!-- -->.
+Returns the value of the edge that connects `nodeU` to `nodeV` (in the order, if any, specified by `endpoints`<!-- -->), if one is present; otherwise, returns undefined.
 
-throws IllegalArgumentException if `nodeU` or `nodeV` is not an element of this graph
+Throws if `nodeU` or `nodeV` is not an element of this graph.
 
 **Signature:**
 ```javascript

@@ -21,15 +21,15 @@ import { EndpointPair } from "./EndpointPair";
  */
 
 /**
- * An interface for <a
+ * A subinterface of {@link BaseGraph} for <a
  * href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data,
- * whose edges have associated non-unique values.
+ * whose edges have associated non-unique values
  *
  * @remarks
  *
- * <p>A graph is composed of a set of nodes and a set of edges connecting pairs of nodes.
+ * A graph is composed of a set of nodes and a set of edges connecting pairs of nodes.
  *
- * <p>There are three primary interfaces provided to represent graphs. In order of increasing
+ * There are three primary interfaces provided to represent graphs. In order of increasing
  * complexity they are: {@link Graph}, {@link ValueGraph}, and {@link Network}. You should generally
  * prefer the simplest interface that satisfies your use case. See the <a
  * href="https://github.com/google/guava/wiki/GraphsExplained#choosing-the-right-graph-type">
@@ -37,7 +37,7 @@ import { EndpointPair } from "./EndpointPair";
  *
  * **Capabilities**
  *
- * <p>`ValueGraph` supports the following use cases (<a
+ * `ValueGraph` supports the following use cases (<a
  * href="https://github.com/google/guava/wiki/GraphsExplained#definitions">definitions of
  * terms</a>):
  *
@@ -49,7 +49,7 @@ import { EndpointPair } from "./EndpointPair";
  *   <li>graphs whose edges have associated values
  * </ul>
  *
- * <p>`ValueGraph`, as a subtype of `Graph`, explicitly does not support parallel edges,
+ * `ValueGraph`, as a subtype of `Graph`, explicitly does not support parallel edges,
  * and forbids implementations or extensions with parallel edges. If you need parallel edges, use
  * {@link Network}. (You can use a positive `Integer` edge value as a loose representation of
  * edge multiplicity, but the `*degree()` and mutation methods will not reflect your
@@ -57,49 +57,29 @@ import { EndpointPair } from "./EndpointPair";
  *
  * **Building a `ValueGraph`**
  *
- * <p>The implementation classes that `common.graph` provides are not public, by design. To
+ * The implementation classes that are provided are not public, by design. To
  * create an instance of one of the built-in implementations of `ValueGraph`, use the {@link
  * ValueGraphBuilder} class:
  *
  * ```typescript
- * MutableValueGraph<Integer, Double> graph = ValueGraphBuilder.directed().build();
+ * const graph: MutableValueGraph<number, number> = ValueGraphBuilder.directed().build();
  * ```
  *
- * <p>{@link ValueGraphBuilder.build} returns an instance of {@link MutableValueGraph}, which is a
+ * {@link ValueGraphBuilder.build} returns an instance of {@link MutableValueGraph}, which is a
  * subtype of `ValueGraph` that provides methods for adding and removing nodes and edges. If
  * you do not need to mutate a graph (e.g. if you write a method than runs a read-only algorithm on
  * the graph), you should use the non-mutating {@link ValueGraph} interface, or an {@link
  * ImmutableValueGraph}.
  *
- * <p>You can create an immutable copy of an existing `ValueGraph` using {@link
+ * You can create an immutable copy of an existing `ValueGraph` using {@link
  * ImmutableValueGraph.copyOf}:
  *
  * ```typescript
- * ImmutableValueGraph<Integer, Double> immutableGraph = ImmutableValueGraph.copyOf(graph);
+ * const immutableGraph: ImmutableValueGraph<number, number>  = ImmutableValueGraph.copyOf(graph);
  * ```
  *
- * <p>Instances of {@link ImmutableValueGraph} do not implement {@link MutableValueGraph}
- * (obviously!) and are contractually guaranteed to be unmodifiable and thread-safe.
- *
- * <p>The Guava User Guide has <a
- * href="https://github.com/google/guava/wiki/GraphsExplained#building-graph-instances">more
- * information on (and examples of) building graphs</a>.
- *
- * **Additional documentation**
- *
- * <p>See the Guava User Guide for the `common.graph` package (<a
- * href="https://github.com/google/guava/wiki/GraphsExplained">"Graphs Explained"</a>) for
- * additional documentation, including:
- *
- * <ul>
- *   <li><a
- *       href="https://github.com/google/guava/wiki/GraphsExplained#equals-hashcode-and-graph-equivalence">
- *       `equals()`, `hashCode()`, and graph equivalence</a>
- *   <li><a href="https://github.com/google/guava/wiki/GraphsExplained#synchronization">
- *       Synchronization policy</a>
- *   <li><a href="https://github.com/google/guava/wiki/GraphsExplained#notes-for-implementors">Notes
- *       for implementors</a>
- * </ul>
+ * Instances of {@link ImmutableValueGraph} do not implement {@link MutableValueGraph}
+ * (obviously!) and are contractually guaranteed to be unmodifiable.
  *
  * @public
  */
@@ -120,22 +100,21 @@ export interface ValueGraph<N, V> extends BaseGraph<N> {
 
   /**
    * Returns the value of the edge that connects `nodeU` to `nodeV` (in the order, if
-   * any, specified by `endpoints`), if one is present;
-   * otherwise, returns `Optional.empty()`.
+   * any, specified by `endpoints`), if one is present; otherwise, returns undefined.
    *
-   * throws IllegalArgumentException if `nodeU` or `nodeV` is not an element of this
-   *     graph
+   * Throws if `nodeU` or `nodeV` is not an element of this graph.
    */
   edgeValue(nodeU: N, nodeV: N): V | undefined;
 
   /**
    * Returns the value of the edge that connects `endpoints` (in the order, if any, specified
-   * by `endpoints`), if one is present; otherwise, returns `Optional.empty()`.
+   * by `endpoints`), if one is present; otherwise, returns undefined.
    *
-   * <p>If this graph is directed, the endpoints must be ordered.
+   * If this graph is directed, the endpoints must be ordered.
    *
-   * throws IllegalArgumentException if either endpoint is not an element of this graph
-   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   * Throws if either endpoint is not an element of this graph.
+   *
+   * Throws if the endpoints are unordered and the graph is directed.
    */
   edgeValueConnectingEndpoints(endpoints: EndpointPair<N>): V | undefined;
 
@@ -143,10 +122,9 @@ export interface ValueGraph<N, V> extends BaseGraph<N> {
    * Returns the value of the edge that connects `nodeU` to `nodeV`, if one is present;
    * otherwise, returns `defaultValue`.
    *
-   * <p>In an undirected graph, this is equal to `edgeValueOrDefault(nodeV, nodeU, defaultValue)`.
+   * In an undirected graph, this is equal to `edgeValueOrDefault(nodeV, nodeU, defaultValue)`.
    *
-   * throws IllegalArgumentException if `nodeU` or `nodeV` is not an element of this
-   *     graph
+   * Throws if `nodeU` or `nodeV` is not an element of this graph.
    */
   edgeValueOrDefault<R>(nodeU: N, nodeV: N, defaultValue: R): V | R;
 
@@ -154,10 +132,11 @@ export interface ValueGraph<N, V> extends BaseGraph<N> {
    * Returns the value of the edge that connects `endpoints` (in the order, if any, specified
    * by `endpoints`), if one is present; otherwise, returns `defaultValue`.
    *
-   * <p>If this graph is directed, the endpoints must be ordered.
+   * If this graph is directed, the endpoints must be ordered.
    *
-   * throws IllegalArgumentException if either endpoint is not an element of this graph
-   * throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   * Throws if either endpoint is not an element of this graph.
+   *
+   * Throws if the endpoints are unordered and the graph is directed.
    */
   edgeValueConnectingEndpointsOrDefault<R>(endpoints: EndpointPair<N>, defaultValue: R): V | R;
 
@@ -169,21 +148,19 @@ export interface ValueGraph<N, V> extends BaseGraph<N> {
    * Returns `true` iff `object` is a {@link ValueGraph} that has the same elements and
    * the same structural relationships as those in this graph.
    *
-   * <p>Thus, two value graphs A and B are equal if <b>all</b> of the following are true:
+   * Thus, two value graphs A and B are equal if <b>all</b> of the following are true:
    *
    * <ul>
-   *   <li>A and B have equal {@link isDirected}.
-   *   <li>A and B have equal {@link nodes}.
-   *   <li>A and B have equal {@link edges}.
-   *   <li>The {@link edgeValue} of a given edge is the same in both A and B.
+   *   <li>A and B have equal {@link BaseGraph.isDirected}.
+   *   <li>A and B have equal {@link BaseGraph.nodes}.
+   *   <li>A and B have equal {@link BaseGraph.edges}.
+   *   <li>The {@link ValueGraph.edgeValue} of a given edge is the same in both A and B.
    * </ul>
    *
-   * <p>Graph properties besides {@link isDirected} do <b>not</b> affect equality.
+   * Graph properties besides {@link BaseGraph.isDirected} do <b>not</b> affect equality.
    * For example, two graphs may be considered equal even if one allows self-loops and the other
    * doesn't. Additionally, the order in which nodes or edges are added to the graph, and the order
    * in which they are iterated over, are irrelevant.
-   *
-   * <p>A reference implementation of this is provided by {@link AbstractValueGraph.equals}.
    */
-  equals(obj: ValueGraph<N, V>): boolean;
+  equals(object: ValueGraph<N, V>): boolean;
 }

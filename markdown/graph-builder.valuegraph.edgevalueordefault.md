@@ -4,9 +4,9 @@
 
 Returns the value of the edge that connects `nodeU` to `nodeV`<!-- -->, if one is present; otherwise, returns `defaultValue`<!-- -->.
 
-<p>In an undirected graph, this is equal to `edgeValueOrDefault(nodeV, nodeU, defaultValue)`<!-- -->.
+In an undirected graph, this is equal to `edgeValueOrDefault(nodeV, nodeU, defaultValue)`<!-- -->.
 
-throws IllegalArgumentException if `nodeU` or `nodeV` is not an element of this graph
+Throws if `nodeU` or `nodeV` is not an element of this graph.
 
 **Signature:**
 ```javascript

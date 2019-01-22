@@ -16,11 +16,11 @@
 |  Interface | Description |
 |  --- | --- |
 |  [`BaseGraph`](./graph-builder.basegraph.md) | A non-public interface for the methods shared between [Graph](./graph-builder.graph.md) and [ValueGraph](./graph-builder.valuegraph.md)<!-- -->. |
-|  [`Graph`](./graph-builder.graph.md) | An interface for <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data, whose edges are anonymous entities with no identity or information of their own. |
+|  [`Graph`](./graph-builder.graph.md) | A subinterface of [BaseGraph](./graph-builder.basegraph.md) for <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data, whose edges are anonymous entities with no identity or information of their own. |
 |  [`GraphConnections`](./graph-builder.graphconnections.md) | An interface for representing and manipulating an origin node's adjacent nodes and edge values in a [Graph](./graph-builder.graph.md)<!-- -->. |
 |  [`MutableGraph`](./graph-builder.mutablegraph.md) | A subinterface of [Graph](./graph-builder.graph.md) which adds mutation methods. When mutation is not required, users should prefer the [Graph](./graph-builder.graph.md) interface. |
 |  [`MutableValueGraph`](./graph-builder.mutablevaluegraph.md) | A subinterface of [ValueGraph](./graph-builder.valuegraph.md) which adds mutation methods. When mutation is not required, users should prefer the [ValueGraph](./graph-builder.valuegraph.md) interface. |
 |  [`PredecessorsFunction`](./graph-builder.predecessorsfunction.md) | A functional interface for <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data. |
 |  [`SuccessorsFunction`](./graph-builder.successorsfunction.md) | A functional interface for <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data. |
-|  [`ValueGraph`](./graph-builder.valuegraph.md) | An interface for <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data, whose edges have associated non-unique values. |
+|  [`ValueGraph`](./graph-builder.valuegraph.md) | A subinterface of [BaseGraph](./graph-builder.basegraph.md) for <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data, whose edges have associated non-unique values |
 
