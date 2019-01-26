@@ -678,6 +678,7 @@ namespace TreeIterator {
       const result: IteratorResult<N> = iterator.next();
       if (result.done) {
         this.stack.removeLast();
+        return this.next();
       }
       const iterable: Iterable<N> = this.tree.successors(result.value);
       if (!Iterables.isEmpty(iterable)) {
@@ -698,7 +699,7 @@ namespace TreeIterator {
       while (!this.stack.isEmpty()) {
         const top: NodeAndChildren<N> = this.stack.getLast();
         const child: IteratorResult<N> = top.childIterator.next();
-        if (child.done) {
+        if (!child.done) {
           this.stack.addLast(withChildren(this.tree, child.value));
         } else {
           this.stack.removeLast();
