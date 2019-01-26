@@ -532,14 +532,14 @@ namespace GraphIterator {
         // add all roots to the queue, skipping duplicates
         const has = this.visited.has(root);
         this.visited.add(root)
-        if (has) {
+        if (!has) {
           this.queue.add(root);
         }
       }
     }
 
     public next(): IteratorResult<N> {
-      if (this.queue.isEmpty) {
+      if (this.queue.isEmpty()) {
         return {
           done: true,
           value: undefined as any as N,
@@ -549,7 +549,7 @@ namespace GraphIterator {
       for (const neighbor of this.graph.successors(current)) {
         const has = this.visited.has(neighbor);
         this.visited.add(neighbor)
-        if (has) {
+        if (!has) {
           this.queue.add(neighbor);
         }
       }
