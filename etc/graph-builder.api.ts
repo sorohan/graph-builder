@@ -1,5 +1,5 @@
 // @public
-interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunction<N> {
+interface BaseGraph<N> extends SuccessorsAccessor<N>, PredecessorsAccessor<N> {
   adjacentNodes(node: N): Set<N>;
   allowsSelfLoops(): boolean;
   degree(node: N): number;
@@ -115,11 +115,23 @@ interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
   removeNode(node: N): boolean;
 }
 
+// @public (undocumented)
+interface PredecessorsAccessor<N> {
+  // (undocumented)
+  predecessors: PredecessorsFunction<N>;
+}
+
 // WARNING: Unable to find referenced export "graph-builder#Network"
 // WARNING: Unable to find referenced export "graph-builder#Network"
 // @public
 interface PredecessorsFunction<N> {
-  predecessors(node: N): Iterable<N>;
+  (node: N): Iterable<N>;
+}
+
+// @public (undocumented)
+interface SuccessorsAccessor<N> {
+  // (undocumented)
+  successors: SuccessorsFunction<N>;
 }
 
 // WARNING: Unable to find referenced export "graph-builder#Network"
@@ -127,7 +139,20 @@ interface PredecessorsFunction<N> {
 // @public
 interface SuccessorsFunction<N> {
   // WARNING: Unable to find referenced export "graph-builder#Graphs"
-  successors(node: N): Iterable<N>;
+  (node: N): Iterable<N>;
+}
+
+// @public
+interface Traverser<N> {
+  breadthFirst(...startNodes: Array<N>): Iterable<N>;
+  depthFirstPostOrder(...startNodes: Array<N>): Iterable<N>;
+  depthFirstPreOrder(...startNodes: Array<N>): Iterable<N>;
+}
+
+// @public
+class Traversers {
+  static forGraph<N>(graph: SuccessorsAccessor<N>): Traverser<N>;
+  static forTree<N>(tree: SuccessorsAccessor<N>): Traverser<N>;
 }
 
 // WARNING: Unable to find referenced export "graph-builder#ImmutableValueGraph"

@@ -8,7 +8,7 @@ A functional interface for <a href="https://en.wikipedia.org/wiki/Graph_(discret
 
 |  Method | Returns | Description |
 |  --- | --- | --- |
-|  [`predecessors(node)`](./graph-builder.predecessorsfunction.predecessors.md) | `Iterable<N>` | Returns all nodes in this graph adjacent to `node` which can be reached by traversing `node`<!-- -->'s incoming edges <i>against</i> the direction (if any) of the edge.<p/>Some algorithms that operate on a `PredecessorsFunction` may produce undesired results if the returned `Iterable` contains duplicate elements. Implementations of such algorithms should document their behavior in the presence of duplicates.<p/>The elements of the returned `Iterable` must each be unique to the graph.<p/>Throws if `node` is not an element of this graph. |
+|  [`__call(node)`](./graph-builder.predecessorsfunction.__call.md) | `Iterable<N>` | Returns all nodes in this graph adjacent to `node` which can be reached by traversing `node`<!-- -->'s incoming edges <i>against</i> the direction (if any) of the edge.<p/>Some algorithms that operate on a `PredecessorsFunction` may produce undesired results if the returned `Iterable` contains duplicate elements. Implementations of such algorithms should document their behavior in the presence of duplicates.<p/>The elements of the returned `Iterable` must each be unique to the graph.<p/>Throws if `node` is not an element of this graph. |
 
 ## Remarks
 

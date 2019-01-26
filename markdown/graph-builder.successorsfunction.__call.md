@@ -1,6 +1,6 @@
-[Home](./index) &gt; [graph-builder](./graph-builder.md) &gt; [SuccessorsFunction](./graph-builder.successorsfunction.md) &gt; [successors](./graph-builder.successorsfunction.successors.md)
+[Home](./index) &gt; [graph-builder](./graph-builder.md) &gt; [SuccessorsFunction](./graph-builder.successorsfunction.md) &gt; [\_\_call](./graph-builder.successorsfunction.__call.md)
 
-# SuccessorsFunction.successors method
+# SuccessorsFunction.\_\_call method
 
 Returns all nodes in this graph adjacent to `node` which can be reached by traversing `node`<!-- -->'s outgoing edges in the direction (if any) of the edge.
 
@@ -14,7 +14,7 @@ Throws if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript
-successors(node: N): Iterable<N>;
+(node: N): Iterable<N>;
 ```
 **Returns:** `Iterable<N>`
 
