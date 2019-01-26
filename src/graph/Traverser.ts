@@ -307,7 +307,7 @@ export interface Traverser<N> {
 
 namespace Iterables {
   export const isEmpty = <N>(iterable: Iterable<N>): boolean => {
-    return !iterable[Symbol.iterator]().next().done;
+    return iterable[Symbol.iterator]().next().done;
   }
 
   export const addAll = <N>(queue: Queue<N>, iterable: Iterable<N>): void => {
@@ -373,7 +373,7 @@ class GraphTraverser<N> implements Traverser<N> {
   }
 }
 
-export class TreeTraverser<N> implements Traverser<N> {
+class TreeTraverser<N> implements Traverser<N> {
   constructor(private tree: SuccessorsFunction<N>) { }
 
   public breadthFirst(startNode: N): Iterable<N> {
@@ -587,7 +587,7 @@ namespace GraphIterator {
           };
         }
         const nodeAndSuccessors: NodeAndSuccessors<N> = this.stack.getFirst();
-        const firstVisit: boolean = !!(nodeAndSuccessors.node && this.visited.has(nodeAndSuccessors.node));
+        const firstVisit: boolean = (nodeAndSuccessors.node === undefined || !this.visited.has(nodeAndSuccessors.node));
         if (nodeAndSuccessors.node !== undefined) {
           this.visited.add(nodeAndSuccessors.node);
         }
