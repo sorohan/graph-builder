@@ -1,6 +1,6 @@
 {
   "name": "graph-builder",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A graph builder library for modeling abstract graph structures.",
   "homepage": "https://github.com/sorohan/graph-builder",
   "main": "dist/index.js",
