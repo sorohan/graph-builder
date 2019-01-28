@@ -1,6 +1,6 @@
 {
   "name": "graph-builder",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A graph builder library for modeling abstract graph structures.",
   "homepage": "https://github.com/sorohan/graph-builder",
   "main": "dist/index.js",
@@ -19,7 +19,8 @@
     "build": "tsc",
     "test": "tape -r ts-node/register **/*.spec.ts",
     "cover": "nyc --reporter text --reporter html --report-dir coverage npm run test",
-    "docs": "rm -rf markdown && api-extractor run --config ./api-extractor.json && api-documenter markdown"
+    "docs": "rm -rf markdown && api-extractor run --config ./api-extractor.json && api-documenter markdown",
+    "new-docs": "rm -rf markdown && (api-extractor run --config ./api-extractor.json || true) && cp temp/graph-builder.api.ts ./etc"
   },
   "keywords": [
     "graph",

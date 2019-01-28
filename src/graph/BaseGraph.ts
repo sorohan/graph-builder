@@ -1,5 +1,5 @@
-import { SuccessorsFunction } from "./SuccessorsFunction";
-import { PredecessorsFunction } from "./PredecessorsFunction";
+import { SuccessorsFunction, SuccessorsAccessor } from "./SuccessorsFunction";
+import { PredecessorsFunction, PredecessorsAccessor } from "./PredecessorsFunction";
 import { ElementOrder } from "./ElementOrder";
 import { EndpointPair } from "./EndpointPair";
 
@@ -26,7 +26,7 @@ import { EndpointPair } from "./EndpointPair";
  *
  * @public
  */
-export interface BaseGraph<N> extends SuccessorsFunction<N>, PredecessorsFunction<N> {
+export interface BaseGraph<N> extends SuccessorsAccessor<N>, PredecessorsAccessor<N> {
   //
   // Graph-level accessors
   //

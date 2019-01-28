@@ -1,6 +1,6 @@
-[Home](./index) &gt; [graph-builder](./graph-builder.md) &gt; [PredecessorsFunction](./graph-builder.predecessorsfunction.md) &gt; [predecessors](./graph-builder.predecessorsfunction.predecessors.md)
+[Home](./index) &gt; [graph-builder](./graph-builder.md) &gt; [PredecessorsFunction](./graph-builder.predecessorsfunction.md) &gt; [\_\_call](./graph-builder.predecessorsfunction.__call.md)
 
-# PredecessorsFunction.predecessors method
+# PredecessorsFunction.\_\_call method
 
 Returns all nodes in this graph adjacent to `node` which can be reached by traversing `node`<!-- -->'s incoming edges <i>against</i> the direction (if any) of the edge.
 
@@ -12,7 +12,7 @@ Throws if `node` is not an element of this graph.
 
 **Signature:**
 ```javascript
-predecessors(node: N): Iterable<N>;
+(node: N): Iterable<N>;
 ```
 **Returns:** `Iterable<N>`
 

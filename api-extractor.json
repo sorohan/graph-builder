@@ -10,5 +10,8 @@
   "apiJsonFile": {
     "enabled": true,
     "outputFolder": "input"
+  },
+  "policies": {
+    "namespaceSupport": "permissive"
   }
 }

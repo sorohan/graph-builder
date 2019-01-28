@@ -17,6 +17,13 @@
  */
 
 /**
+ * @public
+ */
+export interface PredecessorsAccessor<N> {
+  predecessors: PredecessorsFunction<N>
+}
+
+/**
  * A functional interface for <a
  * href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data.
  *
@@ -79,5 +86,5 @@ export interface PredecessorsFunction<N> {
    *
    * Throws if `node` is not an element of this graph.
    */
-  predecessors(node: N): Iterable<N>
+  (node: N): Iterable<N>
 }

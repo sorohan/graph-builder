@@ -17,6 +17,13 @@
  */
 
 /**
+ * @public
+ */
+export interface SuccessorsAccessor<N> {
+  successors: SuccessorsFunction<N>;
+}
+
+/**
  * A functional interface for <a
  * href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data.
  *
@@ -82,5 +89,5 @@ export interface SuccessorsFunction<N> {
    *
    * Throws if `node` is not an element of this graph.
    */
-  successors(node: N): Iterable<N>
+  (node: N): Iterable<N>
 }

@@ -18,6 +18,14 @@ export class ImmutableSet<N> extends Set<N> { // }, Iterable<N> {
     return new ImmutableSet(null, operations);
   }
 
+  static of <N>(node: N) {
+    return new ImmutableSet([node]);
+  }
+
+  static empty <N>() {
+    return new ImmutableSet<N>();
+  }
+
   private constructor(values?: Array<N> | null, readOperations?: ImmutableSetReadOperations<N>) {
     super(values);
     this.readOperations = readOperations || {
