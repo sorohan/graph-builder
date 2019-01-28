@@ -27,7 +27,7 @@ export abstract class EndpointPairIterator<N> implements Iterator<EndpointPair<N
 
   private nodeIterator: Iterator<N>;
 
-  private nextNode?: IteratorResult<N>; // null is safe as an initial value because graphs don't allow null nodes
+  protected nextNode?: IteratorResult<N>; // undefined is safe as an initial value because graphs don't allow null nodes
   protected successorIterator: Iterator<N> = {
     next: () => ({ done: true, value: undefined as unknown as N }),
   };
@@ -121,7 +121,7 @@ class Undirected<N> extends EndpointPairIterator<N> {
 
   next() {
     while (true) {
-      const successNext = this.successorIterator.next();
+      let successNext = this.successorIterator.next();
       while (!successNext.done) {
         const otherNode: N = successNext.value;
         if (!this.visitedNodes.has(otherNode)) {
@@ -130,9 +130,12 @@ class Undirected<N> extends EndpointPairIterator<N> {
             done: false,
           };
         }
+        successNext = this.successorIterator.next();
       }
       // Add to visited set *after* processing neighbors so we still include self-loops.
-      this.visitedNodes.add(this.node);
+      if (this.nextNode !== undefined) {
+        this.visitedNodes.add(this.node);
+      }
       if (!this.advance()) {
         this.visitedNodes = new Set<N>();
         return {

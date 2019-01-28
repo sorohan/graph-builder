@@ -71,8 +71,9 @@ export class UndirectedGraphConnections<N, V> implements GraphConnections<N, V> 
     this.addSuccessor(node, value);
   }
 
-  public addSuccessor(node: N, value: V): V {
+  public addSuccessor(node: N, value: V): V | undefined {
+    const previousValue = this.adjacentNodeValues.get(node);
     this.adjacentNodeValues.set(node, value);
-    return value;
+    return previousValue;
   }
 }
