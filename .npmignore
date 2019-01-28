@@ -1,3 +1,4 @@
+**/*.java
 src
 coverage
 .git
@@ -5,3 +6,5 @@ coverage
 .sonarlint
 .vscode
 tsconfig
+temp
+input
