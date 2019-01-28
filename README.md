@@ -127,7 +127,55 @@ for (const n of graph.predecessors("peanut butter")) {
 //   chocolate
 ```
 
-### More
+### Traversing the Graph
+
+The traversers return iterators.
+
+Traverse a graph that looks like this (numbered breadth first):
+
+```
+ 1     2
+ | \   |
+ 3  4--5
+ |
+ 6
+```
+
+```javascript
+const { GraphBuilder, Traversers } = require('graph-builder');
+const graph = GraphBuilder.directed().allowsSelfLoops(true).build();
+graph.putEdge(1, 3);
+graph.putEdge(1, 4);
+graph.putEdge(2, 5);
+graph.putEdge(4, 5);
+graph.putEdge(3, 6);
+```
+
+Iterate breadth first:
+
+```javascript
+const nodeIterator = Traversers.forGraph(graph).breadthFirst(1, 2); // starting from root nodes, 1 & 2
+console.log(Array.from(nodeIterator).join(', '));
+// prints: 1, 2, 3, 4, 5, 6,
+```
+
+Iterate depth first preorder:
+
+```javascript
+const nodeIterator = Traversers.forGraph(graph).depthFirstPreOrder(1, 2); // starting from root nodes, 1 & 2
+console.log(Array.from(nodeIterator).join(', '));
+// prints: 1, 3, 6, 4, 5, 2
+```
+
+Iterate depth first postorder:
+
+```javascript
+const nodeIterator = Traversers.forGraph(graph).depthFirstPostOrder(1, 2); // starting from root nodes, 1 & 2
+console.log(Array.from(nodeIterator).join(', '));
+// prints: 6, 3, 5, 4, 1, 2
+```
+
+## More
 
 See the full [API
 documentation](https://github.com/sorohan/graph-builder/blob/master/markdown/graph-builder.md) for usage.
